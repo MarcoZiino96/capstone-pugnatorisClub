@@ -1,0 +1,37 @@
+.card-title{
+  font-weight: 700;
+}
+
+.row > *{
+  padding: 0;
+}
+
+.imgCardUser{
+  width: 150px;
+  height: 180px;
+}
+
+.card{
+  width: 250px;
+  box-shadow: 0 0 15px var(--arancione)
+}
+
+.card-body{
+  padding: 20px;
+}
+
+.card p.card-text{
+  margin: 0;
+  color: var(--arancione);
+}
+
+a i.bi.bi-plus{
+  color: var(--arancione);
+  font-size: 2rem;
+}
+
+a i.bi.bi-trash2-fill{
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+

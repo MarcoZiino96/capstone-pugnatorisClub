@@ -1,0 +1,28 @@
+
+img.rounded-circle{
+  width: 150px;
+}
+
+.icon i{
+  color: var(--arancione);
+}
+
+.icon p{
+  color: white;
+}
+
+.pLinkEdit{
+  @media (max-width:330px) {
+    font-size: 0.9rem;
+    padding-top: 2.5px;
+  }
+}
+
+.btnEdit{
+border-radius: 30px;
+background-color: var(--arancione);
+font-weight: 700;
+color: white;
+width: 125px;
+}
+

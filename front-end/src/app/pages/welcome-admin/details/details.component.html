@@ -1,0 +1,74 @@
+<div class="container my-5">
+
+  <div class="d-flex justify-content-center">
+
+    <div class="btn icon" routerLink="/welcomeAdmin">
+      <i class="bi bi-arrow-left"></i>
+      <p>INDIETRO</p>
+    </div>
+
+  </div>
+
+  <div *ngIf="showAbbonamenti">
+
+    <div class="text-center">
+      <img class="imgCardUser rounded-circle" [src]="user.fotoProfilo" alt="fotoProfilo">
+      <p class=" nameUser fw-bold py-3">{{user.nome}} {{user.cognome}}</p>
+    </div>
+
+    <h5 class="text-center text-white mb-3">ABBONAMENTI</h5>
+
+    <div class="row gap-3 justify-content-center">
+      <div class="card d-flex  col-12 col-md-6 col-lg-2" *ngFor="let a of abbonamenti">
+        <div class="card-body">
+
+          <h6 class=" text-center card-title fw-bold">{{a.corso.categoria}}</h6>
+
+          <hr>
+
+          <div class="d-flex justify-content-between mb-3">
+
+            <div>
+              <p class="fw-bold">Durata</p>
+              <p class="card-text">{{a.durata}}</p>
+            </div>
+
+            <div>
+              <p class="fw-bold">Costo</p>
+              <p class="card-text">{{a.costoAbbonamento}}€</p>
+            </div>
+
+          </div>
+
+          <div class="d-flex justify-content-between">
+
+            <div>
+              <div>
+                <p class="fw-bold">Attivazione</p>
+                <p class="card-text">{{a.dataAttivazione}}</p>
+              </div>
+            </div>
+
+            <div>
+              <p class="fw-bold">Scadenza</p>
+              <p class="card-text">{{a.dataScadenza}}</p>
+            </div>
+
+          </div>
+
+          <div class="text-center pt-3">
+            <a (click)="deleteAbbonamento(a.id)" class=" text-center text-decoration-none">
+              <i class="bi bi-trash2-fill text-danger"></i>
+            </a>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="fw-bold text-white text-center fs-4" *ngIf="!showAbbonamenti">
+    Questo utente non ha nessun abbonamento.
+  </div>
+</div>

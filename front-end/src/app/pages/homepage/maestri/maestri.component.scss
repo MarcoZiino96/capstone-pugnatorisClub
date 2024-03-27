@@ -1,0 +1,36 @@
+
+.container h4{
+  color: var(--arancione);
+  font-weight: 700;
+  text-align: center;
+}
+
+.container h2{
+  color: white;
+  font-weight: 700;
+}
+
+hr{
+  border: 1px solid var(--arancione);
+}
+
+.istruttore{
+  text-align: center;
+  @media(min-width:800px){
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding-bottom: 10px;
+  }
+}
+
+.imgIstruttore{
+  width: 300px;
+  height: 350px;
+  border-radius: 10px;
+  box-shadow: 0 0 15px var(--arancione)
+}
+
+.animate__animated{
+  animation-duration: 5s;
+}

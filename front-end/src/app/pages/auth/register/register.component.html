@@ -1,0 +1,107 @@
+<div class="boxForm">
+
+  <div class="container py-2 text-center">
+
+
+    <div *ngIf="!registered">
+      <form [formGroup]="registerForm">
+
+        <h3 class=" titleForm text-center my-4">REGISTRAZIONE</h3>
+
+        <div class="form-floating">
+          <input id="nome" type="text" class="form-control" formControlName="nome">
+          <label>Nome</label>
+          <span *ngIf="registerForm.controls['nome'].dirty"
+            [ngClass]="{ 'valid': isValid('nome'), 'invalid': isInvalid('nome') }">{{msg.nome}}</span>
+        </div>
+
+        <div class="form-floating">
+          <input id="cognome" type="text" class="form-control" formControlName="cognome">
+          <label>Cognome</label>
+          <span *ngIf="registerForm.controls['cognome'].dirty"
+            [ngClass]="{ 'valid': isValid('cognome'), 'invalid': isInvalid('cognome') }">
+            {{msg.cognome}}
+          </span>
+        </div>
+
+        <div class="form-floating">
+          <input id="username" type="text" class="form-control" formControlName="username">
+          <label>Username</label>
+          <span *ngIf="registerForm.controls['username'].dirty"
+            [ngClass]="{ 'valid': isValid('username'), 'invalid': isInvalid('username') }">
+            {{msg.username}}
+          </span>
+        </div>
+
+        <div class="form-floating">
+          <input id="dataNascita" type="date" class="form-control" formControlName="dataNascita">
+          <label>Data di nascita</label>
+          <span *ngIf="registerForm.controls['dataNascita'].dirty"
+            [ngClass]="{ 'valid': isValid('dataNascita'), 'invalid': isInvalid('dataNascita') }">
+            {{msg.dataNascita}}
+          </span>
+        </div>
+
+        <div class="form-floating">
+          <input id="email" type="text" class="form-control" formControlName="email">
+          <label>Email</label>
+          <span *ngIf="registerForm.controls['email'].dirty"
+            [ngClass]="{ 'valid': isValid('email'), 'invalid': isInvalid('email') }">
+            {{msg.email}}
+          </span>
+        </div>
+
+        <div>
+
+          <div class=" form-floating d-flex align-items-center">
+
+            <input id='password' type="{{showPassword ? 'text' : 'password'}}" class="form-control" formControlName="password">
+            <label>Password</label>
+
+            <div class="btn" (click)="toggleShowPassword()">
+              <i class="bi" [ngClass]="showPassword ? 'bi-eye-slash' : 'bi-eye-fill'"></i>
+            </div>
+
+          </div>
+
+          <span *ngIf="registerForm.controls['password'].dirty"
+            [ngClass]="{ 'valid': isValid('password'), 'invalid': isInvalid('password') }">
+            {{msg.password}}
+          </span>
+
+        </div>
+
+        <div>
+          <div class=" form-floating d-flex align-items-center">
+
+            <input id='confirmPassword' type="{{showConfirmPassword ? 'text' : 'password'}}" class="form-control" formControlName="confirmPassword">
+            <label>Conferma password</label>
+
+            <div class="btn" (click)="toggleShowConfirmPassword()">
+              <i class="bi" [ngClass]="showConfirmPassword ? 'bi-eye-slash' : 'bi-eye-fill'"></i>
+            </div>
+
+          </div>
+
+          <span *ngIf="registerForm.controls['confirmPassword'].dirty" [ngClass]="{ 'valid':match, 'invalid':!match}">
+            {{msg.confirmPassword}}
+          </span>
+        </div>
+
+        <button  [disabled]="!registerForm.valid" (click)="register()" class="btnForm p-2 my-5">REGISTRAMI</button>
+      </form>
+    </div>
+
+
+    <div class="my-5" *ngIf="registered">
+      <div class="container animate__animated animate__lightSpeedInLeft animate_slow">
+        <h2 class="fw-bold mb-5 text-white">Benvenuto <span class="nameRegistered">{{this.registerForm.value['username']}}.</span> La registrazione è avvenuta con successo!
+        </h2>
+        <a type="submit" routerLink="../../auth/login" class="text-decoration-none p-2 btnForm">
+          Vai al Login
+        </a>
+      </div>
+
+
+    </div>
+  </div>

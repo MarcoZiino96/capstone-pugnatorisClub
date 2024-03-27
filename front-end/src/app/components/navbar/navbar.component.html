@@ -1,0 +1,138 @@
+<nav class="navbar">
+
+  <div class="container-fluid">
+
+
+    <a class="navbar-brand">
+      <img class="nav-logo" src="../../../assets/pugnatoris-club-logo.png" alt="logo">
+    </a>
+
+
+    <button (click)="collapsed = !collapsed" class="btn btnToggle" type="button" data-bs-toggle="offcanvas"
+      data-bs-backdrop="true" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
+      <i class="bi bi-list"></i>
+    </button>
+
+
+    <div [ngClass]="{show:collapsed}" class="offcanvas offcanvas-end " tabindex="-1" id="offcanvasRight"
+      aria-labelledby="offcanvasRightLabel">
+
+
+      <div class="offcanvas-header bodyOff d-flex justify-content-between">
+        <h5 class="offcanvas-title" id="offcanvasRightLabel">MENU'</h5>
+
+        <div (click)="collapsed = !collapsed" type="button" class=" btnClose" data-bs-dismiss="offcanvas"
+          aria-label="Close">
+          <i class="bi bi-x-lg text-white"></i>
+        </div>
+
+      </div>
+
+      <div class="offcanvas-body bodyOff">
+
+        <ul class="navbar-nav">
+
+          <a (click)="collapsed = !collapsed" class="nav-link active d-flex justify-content-between" aria-current="page"
+            routerLink="/homepage">
+
+            <li class="nav-item">
+              Home
+            </li>
+
+            <div class="iconCanvas">
+              <i class="bi bi-house-door-fill"></i>
+            </div>
+
+          </a>
+
+          <div *ngIf="!isLoggedIn$">
+
+            <a (click)="collapsed = !collapsed" class="nav-link d-flex justify-content-between" routerLink="auth/login">
+
+              <li class="nav-item ">
+                Login
+              </li>
+              <div class="iconCanvas">
+                <i class="bi bi-arrow-right"></i>
+              </div>
+
+            </a>
+
+            <a (click)="collapsed = !collapsed" class="nav-link d-flex justify-content-between"
+              routerLink="auth/register">
+
+              <li class="nav-item ">
+                Register
+              </li>
+              <div class="iconCanvas">
+                <i class="bi bi-arrow-right"></i>
+              </div>
+
+            </a>
+
+          </div>
+
+          <a (click)="collapsed = !collapsed" class="nav-link d-flex justify-content-between" routerLink="/chi-siamo">
+
+            <li class="nav-item ">
+              Chi Siamo
+            </li>
+            <div class="iconCanvas">
+              <i class="bi bi-arrow-right"></i>
+            </div>
+          </a>
+
+          <a (click)="collapsed = !collapsed" class="nav-link d-flex justify-content-between" routerLink="/maestri">
+            <li class="nav-item ">
+              Iron Fighters
+            </li>
+            <div class="iconCanvas">
+              <i class="bi bi-arrow-right"></i>
+            </div>
+          </a>
+
+          <div *ngIf="isLoggedIn$">
+
+            <a (click)="collapsed = !collapsed" class=" nav-link d-flex justify-content-between" routerLink="/welcomeUser">
+              <li class="nav-item">
+                Welcome
+              </li>
+
+              <div class="iconCanvas">
+                <i class="bi bi-door-open"></i>
+              </div>
+            </a>
+
+            <a *ngIf="isAdmin$" (click)="collapsed = !collapsed" class=" nav-link d-flex justify-content-between" routerLink="/welcomeAdmin">
+              <li class="nav-item">
+                Area Riservata
+              </li>
+
+              <div class="iconCanvas">
+                <i class="bi bi-file-lock2"></i>
+              </div>
+            </a>
+
+            <a (click)="collapsed = !collapsed" class=" logOut nav-link d-flex justify-content-between text-danger" (click)="logOut()">
+              <li class="nav-item ">
+                Logout
+              </li>
+
+              <div class="iconCanvas">
+                <i class="bi bi-box-arrow-left text-danger"></i>
+              </div>
+            </a>
+
+
+
+          </div>
+
+        </ul>
+      </div>
+
+
+    </div>
+
+  </div>
+
+</nav>

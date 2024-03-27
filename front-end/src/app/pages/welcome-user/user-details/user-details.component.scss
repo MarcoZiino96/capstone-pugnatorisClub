@@ -1,0 +1,40 @@
+
+.icon i{
+  color: var(--arancione);
+}
+.icon p{
+  color: white;
+}
+.imgCardCorso{
+  width: 280px;
+  height: 200px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center ;
+}
+.card{
+  width: 280px;
+  box-shadow: 0 0 10px var(--arancione)
+}
+
+.card p{
+  margin: 0;
+}
+
+.row > *{
+  padding: 0;
+}
+
+.card-title{
+  font-weight: 700;
+  color: var(--arancione);
+}
+
+hr{
+  border: 1px solid var(--arancione);
+}
+
+p.fw-bold{
+  color: var(--arancione);
+}
+

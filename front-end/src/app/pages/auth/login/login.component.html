@@ -1,0 +1,43 @@
+<div class="boxForm">
+
+  <div class="container text-center py-2">
+
+    <h3 class=" titleForm text-center my-4">ACCEDI</h3>
+
+    <span *ngIf="userError">
+      <p class=" text-center text-danger">username/password errate</p>
+    </span>
+
+    <form [formGroup]="loginForm" (ngSubmit)="logIn()">
+
+      <div class="form-floating">
+        <input id="username" type="text" class="form-control" formControlName="username">
+        <label>Username </label>
+        <span *ngIf="loginForm.controls['username'].dirty"
+          [ngClass]="{ 'valid': isValid('username'), 'invalid': isInvalid('username') }">
+          {{msg.username}}
+        </span>
+
+      </div>
+
+      <div>
+        <div class=" form-floating d-flex align-items-center">
+
+          <input id='password' type="{{showPassword ? 'text' : 'password'}}" class="form-control" formControlName="password">
+          <label>Password</label>
+
+          <div class="btn" (click)="toggleShowPassword()">
+            <i class="bi" [ngClass]="showPassword ? 'bi-eye-slash' : 'bi-eye-fill'"></i>
+          </div>
+
+        </div>
+        <span *ngIf="loginForm.controls['password'].dirty"
+          [ngClass]="{ 'valid': isValid('password'), 'invalid': isInvalid('password') }">
+          {{msg.password}}
+        </span>
+      </div>
+
+      <button [disabled]="loginForm.invalid" class=" btnForm py-2 my-5" type="submit">Sign in</button>
+    </form>
+  </div>
+</div>

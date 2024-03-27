@@ -1,0 +1,40 @@
+<div class="container py-3">
+
+  <div class=" boxLink d-flex justify-content-center">
+
+      <a class=" btn icon" [routerLink]="['/welcomeUser/edit/',accessData]">
+        <i class="bi bi-pencil-square"></i>
+        <p> MODIFICA</p>
+      </a>
+
+      <a class="btn icon" [routerLink]="['/welcomeUser/user-details/',accessData]">
+        <i class="bi bi-ticket-detailed"></i>
+        <p>DETTAGLI</p>
+      </a>
+
+
+  </div>
+
+<div class="animate__animated animate__zoomInDown animate__slow">
+  <h3 class="fw-bold my-3 text-white text-center">I NOSTRI CORSI</h3>
+</div>
+
+  <div class="row gap-3 justify-content-center">
+
+    <div class="card col-12  col-md-6 col-xl-3 mb-2" *ngFor="let c of iCorsi">
+      <img class=" imgCardCorso rounded-top" [src]="getImgByCategories(c.categoria)" alt="imdCorso">
+      <div class="card-body text-center fw-bold">
+        <h5 class="card-title">{{c.categoria}}</h5>
+        <p class="card-text">{{c.descrizione}}</p>
+        <p class="card-text">Periodicità:{{c.durata}}</p>
+        <div class="text-center">
+        <a [routerLink]="['/welcomeUser/prenotazione',accessData,  c.id]" class=" text-decoration-none btnForm p-2"> Scopri di più</a>
+        </div>
+      </div>
+
+
+    </div>
+
+  </div>
+
+</div>

@@ -1,0 +1,40 @@
+.imgCardCorso{
+  width: 280px;
+  height: 200px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center ;
+}
+
+.card{
+  width: 280px;
+  box-shadow: 0 0 10px var(--arancione)
+}
+
+.row > *{
+  padding: 0;
+}
+
+.icon i{
+  color: var(--arancione);
+}
+
+.icon p{
+  color: white;
+}
+
+.card-title{
+  font-weight: 700;
+  color: var(--arancione);
+}
+
+.container .d-flex .btn.icon {
+  padding-top: 1rem;
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+
+
+
+

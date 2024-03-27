@@ -1,0 +1,22 @@
+
+.bgFooter{
+  height: 100%;
+  background-image: url('../../../assets/img/footer.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  padding: 3rem;
+}
+
+.imgLogoFooter{
+  height: 200px;
+  width: 200px;
+}
+
+.bi.bi-facebook, .bi.bi-whatsapp{
+  color: var(--arancione);
+}
+
+.footerText p{
+  font-size: 0.8rem;
+}

@@ -1,0 +1,64 @@
+.nav-logo{
+  height: 80px;
+}
+
+nav.navbar, .bodyOff{
+  background: radial-gradient(circle, rgba(23,29,41,1) 69%, rgba(13,11,9,1) 100%);
+}
+
+.btnToggle{
+  margin-top: 15px;
+}
+
+nav.navbar{
+  width: 100%;
+  position: fixed;
+  top: 0;
+  z-index: 100;
+}
+
+.bi.bi-list{
+  color: var(--arancione);
+  font-size: 2rem;
+  background-color:transparent;
+}
+
+.btlClose{
+  color: white;
+  font-size: 2rem;
+}
+
+.bi.bi-caret-left-fill, .bi.bi-list {
+  color: var(--arancione);
+}
+
+.logOut{
+  cursor: pointer;
+}
+
+.navbar-nav a, .offcanvas-title{
+  color:white;
+  font-weight: 700;
+}
+
+.nav-bar .container-fluid .offcanvas-body ul.navbar-nav a.nav-link:hover{
+  color:var(--arancione);
+}
+
+.offcanvas.offcanvas-end{
+  @media (min-width: 320px){
+    width:75%;
+  }
+  @media (min-width: 480px){
+    width:50%;
+  }
+  @media (min-width: 700px){
+    width:35%;
+  }
+  @media (min-width: 1000px){
+    width:25%;
+  }
+}
+
+
+

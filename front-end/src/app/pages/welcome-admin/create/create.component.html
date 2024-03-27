@@ -1,0 +1,74 @@
+<div class="container my-5">
+
+  <div class="d-flex justify-content-center">
+  <div class="btn icon" routerLink="/welcomeAdmin">
+    <i class="bi bi-arrow-left"></i>
+    <p>INDIETRO</p>
+  </div>
+</div>
+
+
+  <div class="row gap-3 justify-content-center">
+
+    <div class="card col-12  col-md-6 col-xl-3 mb-2">
+
+      <div class="d-flex justify-content-center align-items-center">
+
+        <div class=" text-center pt-3">
+          <img class=" imgCardUser rounded-circle" [src]="iUser.fotoProfilo" alt="imgUtente">
+          <h5 class="card-title">{{iUser.ruolo}}</h5>
+        </div>
+
+        <div class=" cardBody text-center fw-bold">
+
+          <div class="d-flex">
+
+            <div class="text-start">
+              <p class="card-text">Nome</p>
+              <p>{{iUser.nome}}</p>
+            </div>
+
+            <div class="text-end">
+
+              <p class="card-text">Cognome</p>
+              <p >{{iUser.cognome}}</p>
+            </div>
+          </div>
+
+          <div class="text-center">
+              <p class="card-text">Data-Nascita</p>
+              <p class=" fw-bold ">{{iUser.dataNascita}}</p>
+          </div>
+
+        </div>
+
+      </div>
+
+
+    </div>
+  </div>
+
+  <form class="pt-3" [formGroup]="formAbbonamento">
+
+    <select class="form-select mb-2" aria-label="Default select example" formControlName="selectedCorso">
+      <option value="" hidden disabled>Scegli un corso</option>
+      <option *ngFor="let corso of iCorso" [value]="corso.id">
+        {{corso.categoria}}
+      </option>
+    </select>
+
+    <select class="form-select" aria-label="Default select example" formControlName="selectedDurata">
+      <option value="" hidden disabled>Scegli una durata</option>
+      <option value="MENSILE">MENSILE</option>
+      <option value="TRIMESTRALE">TRIMESTRALE</option>
+      <option value="SEMESTRALE">SEMESTRALE</option>
+      <option value="ANNUALE">ANNUALE</option>
+    </select>
+
+    <div class="text-center py-2">
+      <button (click)="addAbbonamento()" [disabled]="!formAbbonamento.valid" class="btnForm py-2">Aggiungi</button>
+    </div>
+  </form>
+
+
+</div>

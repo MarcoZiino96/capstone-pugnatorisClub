@@ -1,0 +1,115 @@
+
+.boxContainer {
+  position: relative;
+  width: 100vw;
+  height: 80vh;
+}
+
+.imageHome{
+  position: absolute;
+  background-image: url("../../../assets/img/photoHome.jpeg");
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+
+.imageHome::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.content {
+  position: relative;
+  top:100px;
+  z-index: 1;
+  @media (min-width:1600px){
+    top: 150px;
+  }
+  @media (min-width:1900px){
+    top: 250px;
+  }
+
+}
+
+.textColor, .textNormal{
+  font-weight:700;
+  font-size: 2.2em;
+  @media(min-width: 1400px){
+    font-size: 2.6rem;
+  }
+  @media(min-width: 1900px){
+    font-size: 3rem;
+  }
+}
+
+.textColor{
+  color:var(--arancione)
+}
+
+.textNormal, .btnGeneral, .p.General{
+  color: white;
+  font-weight: 700;
+}
+
+.btnGeneral, .pGeneral{
+font-size: 1rem;
+@media(min-width: 1400px){
+  font-size: 2rem;
+}
+@media(min-width: 1400px){
+  font-size: 2.6rem;
+}
+}
+
+.btnGeneral{
+  background-color: var(--arancione);
+}
+
+div.content span.animatedSpan{
+  position:absolute;
+  left: 5px;
+  animation: assolvenza 22s infinite;
+  opacity: 0;
+  @media(min-width:768px){
+    right: 20px;
+  }
+  @media(min-width:2000px){
+    right: 25px;
+  }
+}
+
+div.content span:nth-of-type(1) {
+  animation-delay: 1s;
+}
+
+div.content span:nth-of-type(2) {
+  animation-delay: 8s;
+}
+
+div.content span:nth-of-type(3) {
+  animation-delay: 16s;
+}
+
+@keyframes assolvenza{
+  0%{opacity:0; transform:translateY(60%)}
+  20%{ opacity: 1; transform:translateY(0%)}
+  60%{opacity: 0; transform:translateY(-120%)}
+  100%{opacity: 0;transform:translateY(60%)}
+}
+
+
+
+
+
+
+
+

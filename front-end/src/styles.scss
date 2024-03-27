@@ -1,0 +1,71 @@
+/* You can add global styles to this file, and also import other style files */
+
+/* Importing Bootstrap SCSS file. */
+@import 'bootstrap/scss/bootstrap';
+@import "../node_modules/bootstrap-icons/font/bootstrap-icons.min.css";
+@import 'animate.css/animate.min.css';
+@import 'https://fonts.googleapis.com/css2?family=Spectral:wght@400;700&display=swap';
+
+:root{
+  --arancione:#C65535;
+  --black:#171D29;
+  --white:#c0c2c4;
+}
+
+body{
+  background: radial-gradient(circle, rgba(23,29,41,1) 69%, rgba(13,11,9,1) 100%);
+}
+
+*{
+  font-family: "Spectral", serif;
+}
+
+.valid {
+  color:rgb(9, 242, 9);
+}
+
+.invalid {
+  color: rgb(255, 31, 31);
+}
+
+// stile generale per i form
+
+.titleForm{
+  color: var(--arancione);
+  font-weight: 700;
+}
+
+.form-floating{
+  margin-bottom: 5px;
+}
+
+
+.btnForm{
+  border-radius: 30px;
+  background-color: var(--arancione);
+  font-weight: 700;
+  color: white;
+  width: 125px;
+}
+
+.bi.bi-eye-slash,
+.bi.bi-eye-fill,
+.bi.bi-cloud-plus-fill{
+color: var(--arancione);
+}
+
+
+.swal2-title {
+  color:var(--arancione);
+}
+
+.swal2-confirm:not([disabled]) {
+  background-color:var(--arancione);
+}
+
+.swal2-popup {
+  box-shadow: 0 0 15px var(--arancione);
+}
+
+
+

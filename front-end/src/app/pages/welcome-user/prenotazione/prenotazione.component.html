@@ -1,0 +1,50 @@
+<div class="container mt-3">
+
+  <div class="d-flex justify-content-center">
+    <a class="btn icon" routerLink="/welcomeUser">
+      <i class="bi bi-door-open"></i>
+         <p>WELCOME</p>
+    </a>
+  </div>
+
+  <div class="row gap-3 justify-content-center">
+
+    <h3 class=" animate__animated animate__flash animate__delay-1s fw-bold text-white text-center"> Fai una prenotazione</h3>
+
+    <div class="card text-center col-12 col-md-6 col-xl-4 mb-2">
+
+
+
+      <div>
+        <img [src]="getImgByCategories(iCorso.response.categoria)" class="card-img-top imgCardCorso" alt="fotoCategoria">
+      </div>
+      <div class="card-body text-center">
+        <h5 class="card-title">{{iCorso.response.categoria}}</h5>
+        <p class="card-text">
+          {{iCorso.response.descrizione}}</p>
+        <p class="card-text">
+          <span class="fw-bold">Durata:</span>
+          {{iCorso.response.durata}}</p>
+        <p class="card-text">
+          <span class="fw-bold">Costo mensile:</span> {{iCorso.response.costoMensile}}€
+        </p>
+
+      </div>
+    </div>
+  </div>
+
+  <form [formGroup]="formTurno">
+
+    <select class="form-select" aria-label="Default select example" formControlName="selectedTurno">
+      <option value="" hidden disabled>Scegli un turno</option>
+      <option *ngFor="let turno of iTurni.response" [value]="turno.id">
+        {{turno.giornoLezione}} -
+        {{turno.inizioLezione}} -
+        {{turno.fineLezione}}
+      </option>
+    </select>
+    <div class="text-center py-2">
+    <button [disabled]="!formTurno.valid" (click)="sendPrenotazione()" class=" btn btnPren">Prenota</button>
+    </div>
+  </form>
+</div>
