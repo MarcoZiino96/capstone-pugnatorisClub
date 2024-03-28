@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AuthService } from '../../../Services/auth.service';
 
 @Component({
   selector: 'app-chi-siamo',
@@ -16,5 +17,15 @@ export class ChiSiamoComponent {
     "../../../../assets/img/palestra6.jpg",
     "../../../../assets/img/palestra7.jpg"
   ];
+
+  isLoggedIn$!:boolean;
+
+  constructor(
+    private authSvc:AuthService
+  ){}
+
+  ngOnInit(){
+    this.authSvc.isLoggedIn$.subscribe(data=> this.isLoggedIn$ = data)
+  }
 
 }

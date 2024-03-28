@@ -21,20 +21,20 @@
 
   <div class="row gap-3 justify-content-center">
 
-    <div class="boxCard card col-12  col-md-6 col-xl-3 mb-2" *ngFor="let c of iCorsi">
+    <div class="card col-12 col-md-6 col-lg-6  mb-2" *ngFor="let c of iCorsi">
       <img class=" imgCardCorso rounded-top" [src]="getImgByCategories(c.categoria)" alt="imdCorso">
-      <!-- <div class="imgCardCorso rounded-top" [ngStyle]="{'background-image':'url('+ getImgByCategories(c.categoria)+')'}"> -->
-        <div class="card-body text-center fw-bold">
-          <h5 class="card-title">{{c.categoria}}</h5>
-          <p class="card-text">{{c.descrizione}}</p>
-          <p class="card-text">Periodicità:{{c.durata}}</p>
-          <div class="text-center">
-          <a [routerLink]="['/welcomeUser/prenotazione',accessData,  c.id]" class=" text-decoration-none btnForm p-2"> Scopri di più</a>
-          </div>
+      <div class="card-body text-center">
+        <h5 class="card-title">{{c.categoria}}</h5>
+        <p class="card-text">{{c.descrizione}}</p>
+        <p class="card-text"><span class="fw-bold">Periodicità:</span> {{c.durata}}</p>
+        <div class="text-center">
+        <a [routerLink]="['/welcomeUser/prenotazione',accessData,  c.id]" class=" text-decoration-none btnForm p-2"> Scopri di più</a>
         </div>
       </div>
+
+
     </div>
 
   </div>
 
-<!-- </div> -->
+</div>
