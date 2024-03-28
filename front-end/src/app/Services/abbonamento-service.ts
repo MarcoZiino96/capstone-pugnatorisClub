@@ -21,4 +21,8 @@ export class AbbonamentoService{
   delete(id:number):Observable<void>{
     return this.http.delete<void>(`${this.backendUrl}/abbonamento/delete/${id}`)
   }
+
+  aggiornaDataBase():Observable<IResponseAbbonamento>{
+    return this.http.delete<IResponseAbbonamento>(`${this.backendUrl}/abbonamento/delete/dettagli`)
+  }
 }

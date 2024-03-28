@@ -1,16 +1,20 @@
 .imgCardCorso{
-  width: 280px;
-  height: 200px;
+  width: 100%;
+  height: 100%;
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center ;
 }
 
-.card{
-  width: 280px;
-  box-shadow: 0 0 10px var(--arancione)
+.boxCard{
+  width: 300px;
+  height: 350px;
 }
 
+.card-body{
+  background-color: var(--arancione);
+  opacity:0.5;
+}
 .row > *{
   padding: 0;
 }

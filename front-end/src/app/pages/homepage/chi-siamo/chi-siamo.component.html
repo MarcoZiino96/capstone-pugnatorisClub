@@ -1,1 +1,78 @@
-<p>chi-siamo works!</p>
+<div class="container">
+
+  <div class="mt-5 mb-3 animate__animated animate__zoomIn">
+    <h4>PUGNATORIS CLUB</h4>
+    <h2 class="text-center">LA NOSTRA PALESTRA</h2>
+  </div>
+
+  <hr class="my-5">
+
+  <div class=" animate__animated animate__fadeInDown d-flex justify-content-center mb-1">
+    <ngb-carousel class="boxCarousel">
+      <ng-template ngbSlide *ngFor="let image of images">
+        <img class="imgCarousel" [src]="image" alt="Carousel slide">
+      </ng-template>
+    </ngb-carousel>
+  </div>
+
+  <div class="text-center mt-3">
+
+    <hr class="my-5">
+
+    <p class="text-white animate__animated animate__fadeInLeft animate__slow">
+      Benvenuti al Pugnatoris Club, il tuo punto di riferimento per un'esperienza straordinaria nell'allenamento delle
+      arti marziali miste e della boxe nella nostra comunità. Da oltre un decennio, ci impegniamo a fornire un ambiente
+      accogliente e professionale dove gli aspiranti lottatori, i principianti e gli appassionati possono crescere,
+      imparare e raggiungere obiettivi incredibili.
+      Presso il Pugnatoris Club, offriamo una vasta gamma di corsi che spaziano dalle MMA, al grappling, alla muay thai,
+      fino alla boxe e al kickboxing. Siamo orgogliosi di dividere l'offerta dei nostri corsi tra due istruttori esperti
+      e appassionati: Francesco Aglio e Niko Insana.
+    </p>
+
+    <p class="text-white animate__animated animate__fadeInRight animate__slow">
+      Il nostro istruttore e gestore Niko Insana, un pilastro della nostra comunità, si dedica anima e corpo a portare
+      avanti la tradizione delle arti marziali miste, del grappling e della muay thai. Con la sua profonda esperienza e
+      la sua passione contagiosa, Niko si impegna a guidare ogni allievo verso il successo, fornendo una formazione di
+      altissimo livello e un ambiente di supporto senza pari.
+      D'altra parte, Francesco Aglio è il punto di riferimento per la boxe e il kickboxing presso il nostro club. Con la
+      sua esperienza pluriennale e la sua dedizione senza pari, Francesco si impegna a trasmettere le tecniche più
+      avanzate e a ispirare i nostri studenti a raggiungere nuovi livelli di abilità e fiducia.
+    </p>
+
+    <p class="text-white animate__animated animate__fadeInLeft animate__slow">
+      Unisciti a noi per una sessione di allenamento di prova presso il Pugnatoris Club, dove potrai sperimentare di
+      persona l'energia vibrante e il sostegno della nostra comunità. Iscriviti al nostro sito web per prenotare la tua
+      lezione di prova e ricevere ulteriori informazioni sui nostri corsi. Inizia il tuo viaggio nel mondo delle arti
+      marziali miste e della boxe con noi!
+    </p>
+
+    <hr class="mt-5">
+    <h2 class="text-center animate__animated animate__zoomIn">Il nostro ideale</h2>
+    <hr class="mb-5">
+
+    <div class="animate__animated animate__zoomIn">
+      <div class="text-center">
+        <img class="imgMotto" src="../../../../assets/img/motto.png" alt="fotoMotto">
+      </div>
+
+      <p class="text-white my-3">
+        In conclusione, al Pugnatoris Club il nostro motto "Impossible is nothing" è molto più di un semplice insieme di
+        parole. È il nostro mantra quotidiano, che ci spinge a superare i limiti e a raggiungere grandi traguardi. Qui,
+        con l'aiuto dei nostri istruttori e della nostra comunità, ci impegniamo a trasformare ogni sfida in
+        un'opportunità di crescita e successo. Ti invitiamo a unirti a noi e a scoprire che davvero, nulla è fuori dalla
+        tua portata al Pugnatoris Club. Grazie.
+      </p>
+    </div>
+  </div>
+
+
+  <hr class="mt-5">
+
+  <div class="d-flex justify-content-center my-3">
+    <a class="btn btnGeneral me-5" routerLink="/maestri">Iron Fighters</a>
+    <a class="btn btnGeneral" routerLink="/auth/register">Registrati</a>
+  </div>
+
+  <hr class="mb-5">
+
+</div>

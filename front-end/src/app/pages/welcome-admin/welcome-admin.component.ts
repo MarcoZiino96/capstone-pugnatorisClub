@@ -1,6 +1,8 @@
+
 import { Component, Inject } from '@angular/core';
 import { AuthService } from '../../Services/auth.service';
 import { ICompleteUser } from '../../Models/interfaceUtente/i-complete-user';
+import { AbbonamentoService } from '../../Services/abbonamento-service';
 
 @Component({
   selector: 'app-welcome-admin',
@@ -13,7 +15,8 @@ export class WelcomeAdminComponent {
 
   constructor(
     private authSvc:AuthService,
-    @Inject('Swal') private swal: any
+    @Inject('Swal') private swal: any,
+    private abbonamentoSvc:AbbonamentoService
     ){}
 
 
@@ -27,13 +30,14 @@ export class WelcomeAdminComponent {
 
     this.swal.fire({
       title: "Sei sicuro?",
-      text: "Premi su Cancel per tornare indietro!",
+      text: "Premi su Chiudi per tornare indietro!",
       icon: "warning",
       showCancelButton: true,
       confirmButtonColor: "#d33",
       cancelButtonColor: "#C65535",
       cancelButtonText:"Chiudi",
       confirmButtonText: "Si, voglio cancellarlo!"
+
     }).then((result: { isConfirmed: boolean }) => {
       if (result.isConfirmed) {
         this.authSvc.deleteUtente(id).subscribe(()=>{
@@ -46,7 +50,23 @@ export class WelcomeAdminComponent {
         })
       }
     })
+  }
 
-
+  aggiornaDataBase(){
+    this.abbonamentoSvc.aggiornaDataBase().subscribe((res)=>{
+      if(res.message === "Il database è stato aggiornato"){
+        this.swal.fire({
+          title: "Aggiornato!",
+          text: "Database aggiornato corettamente.",
+          icon: "success"
+        });
+      }else{
+        this.swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: "Qalcosa è andato storto, riprova"
+        });
+      }
+    })
   }
 }
