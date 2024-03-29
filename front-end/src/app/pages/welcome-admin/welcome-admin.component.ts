@@ -41,7 +41,7 @@ export class WelcomeAdminComponent {
     }).then((result: { isConfirmed: boolean }) => {
       if (result.isConfirmed) {
         this.authSvc.deleteUtente(id).subscribe(()=>{
-          this.iUsers = this.iUsers.filter(user => user.id != id)
+          this.iUsers = this.iUsers.filter(user => user.id !== id)
           this.swal.fire({
           title: "Cancellato!",
           text: "Utente cancellato corettamente.",

@@ -1,18 +1,17 @@
 .imgCardCorso {
   width: 280px;
   height: 200px;
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
 }
 .card {
   width: 280px;
   box-shadow: 0 0 10px var(--arancione);
 }
+
 .card-title{
   font-weight: 700;
   color: var(--arancione);
 }
+
 .row > * {
   padding: 0;
 }
@@ -34,6 +33,16 @@
 }
 
 .form-select:focus {
-    background-color: var(--arancione);
-    box-shadow: 0 0 10px var(--arancione);
+    background-color: white;
+    box-shadow: 0 0 15px var(--arancione);
 }
+
+select:focus{
+ background-color: var(--arancione);
+}
+
+
+
+
+
+

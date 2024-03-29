@@ -45,7 +45,7 @@ export class DetailsComponent {
 
   deleteAbbonamento(id:number){
     this.abbonamentoSvc.delete(id).subscribe(()=>{
-      this.abbonamenti = this.abbonamenti.filter(res => res.id != id)
+      this.abbonamenti = this.abbonamenti.filter(res => res.id !== id)
       this.swal.fire({
         title: "Good job!",
         text: "Abbonamento eliminato con  successo!",

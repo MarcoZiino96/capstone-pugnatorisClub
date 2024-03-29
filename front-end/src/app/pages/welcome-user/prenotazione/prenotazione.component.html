@@ -9,7 +9,7 @@
 
   <div class="row gap-3 justify-content-center">
 
-    <h3 class=" animate__animated animate__flash animate__delay-1s fw-bold text-white text-center"> Fai una prenotazione</h3>
+    <h3 class=" animate__animated animate__flash animate__delay-1s fw-bold my-3 text-white text-center"> Fai una prenotazione</h3>
 
     <div class="card text-center col-12 col-md-6 col-xl-4 mb-2">
 
@@ -35,7 +35,7 @@
 
   <form [formGroup]="formTurno">
 
-    <select class="form-select" aria-label="Default select example" formControlName="selectedTurno">
+    <select class="form-select my-3" aria-label="Default select example" formControlName="selectedTurno">
       <option value="" hidden disabled>Scegli un turno</option>
       <option *ngFor="let turno of iTurni.response" [value]="turno.id">
         {{turno.giornoLezione}} -
@@ -43,8 +43,9 @@
         {{turno.fineLezione}}
       </option>
     </select>
+
     <div class="text-center py-2">
-    <button [disabled]="!formTurno.valid" (click)="sendPrenotazione()" class=" btn btnPren">Prenota</button>
+    <button [disabled]="!formTurno.valid" (click)="sendPrenotazione()" class=" btn btnPren my-3">Prenota</button>
     </div>
   </form>
 </div>

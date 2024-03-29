@@ -94,9 +94,7 @@ export class UserDetailsComponent {
 
   deletePrenotazione(id: number) {
     this.prenotazioneSvc.deletePrenotazione(id).subscribe(( () => {
-      this.myPrenotazioni.response = this.myPrenotazioni.response.filter(res =>
-        res.id != id
-      )
+      this.myPrenotazioni.response = this.myPrenotazioni.response.filter(res => res.id !== id)
       this.swal.fire({
         title: "Good job!",
         text: "Prenotazione eliminata con  successo!",

@@ -1,7 +1,5 @@
 
 import { Component } from '@angular/core';
-import { IAuthData } from '../../Models/interfaceUtente/i-auth-data';
-import { IUser } from '../../Models/interfaceUtente/i-user';
 import { CorsoService } from '../../Services/corso.service';
 import { ICorso } from '../../Models/interfaceCorso/i-corso';
 import { AuthService } from '../../Services/auth.service';
