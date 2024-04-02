@@ -1,11 +1,14 @@
 <div class="container mt-3">
 
-  <div class="d-flex justify-content-center">
+  <div class=" boxLink">
     <a class="btn icon" routerLink="/welcomeUser">
       <i class="bi bi-door-open"></i>
-      <p class="fw-bold pLinkEdit">WELCOME</p>
     </a>
+  </div>
+
+  <div class="d-flex justify-content-center">
     <div (click)="showPass = !showPass;showEdit = !showEdit">
+
       <div class="btn icon" *ngIf="!showPass">
         <i class="bi bi-pencil-square"></i>
         <p class="fw-bold pLinkEdit">CAMBIA PASSWORD</p>
@@ -17,6 +20,7 @@
     </div>
   </div>
 
+
   <div *ngIf="iUser">
 
     <div *ngIf="showEdit">
@@ -26,7 +30,7 @@
 
           <div class="my-3">
             <span *ngIf="!fileUrl">
-              <img class="rounded-circle" [src]="iUser.response.fotoProfilo" >
+              <img class="rounded-circle" [src]="iUser.response.fotoProfilo">
             </span>
             <span *ngIf="fileUrl">
               <img class="rounded-circle" [src]="fileUrl" alt="Anteprima immagine">
@@ -95,7 +99,8 @@
 
         <div class="form-floating d-flex align-items-center">
 
-          <input id='oldPassword' type="{{showOldPassword ? 'text' : 'password'}}" class="form-control" formControlName="oldPassword">
+          <input id='oldPassword' type="{{showOldPassword ? 'text' : 'password'}}" class="form-control"
+            formControlName="oldPassword">
           <label>Old Password</label>
 
           <div class="btn" (click)="toggleShowOldPassword()">
@@ -104,8 +109,8 @@
 
         </div>
         <span *ngIf="editPasswordForm.controls['oldPassword'].dirty"
-        [ngClass]="{ 'valid': isValidFormPass('oldPassword'), 'invalid': isInvalidFormPass('oldPassword')}">
-        {{msgPassword.oldPassword}}
+          [ngClass]="{ 'valid': isValidFormPass('oldPassword'), 'invalid': isInvalidFormPass('oldPassword')}">
+          {{msgPassword.oldPassword}}
         </span>
 
       </div>
@@ -114,7 +119,8 @@
 
         <div class="form-floating d-flex align-items-center">
 
-          <input id='newPassword' type="{{showNewPassword ? 'text' : 'password'}}" class="form-control" formControlName="newPassword">
+          <input id='newPassword' type="{{showNewPassword ? 'text' : 'password'}}" class="form-control"
+            formControlName="newPassword">
           <label>New Password</label>
 
           <div class="btn" (click)="toggleShowNewPassword()">
@@ -133,7 +139,8 @@
 
         <div class="form-floating d-flex align-items-center">
 
-          <input id='ConfirmPassword' type="{{showConfirmPassword ? 'text' : 'password'}}" class="form-control" formControlName="confirmPassword">
+          <input id='ConfirmPassword' type="{{showConfirmPassword ? 'text' : 'password'}}" class="form-control"
+            formControlName="confirmPassword">
           <label>Confirm Password</label>
 
           <div class="btn" (click)="toggleShowConfirmPassword()">

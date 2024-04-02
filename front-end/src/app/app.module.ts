@@ -10,6 +10,7 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { DefaultInterceptor } from './Interceptors/default.interceptor';
 import Swal from 'sweetalert2';
 import { FooterComponent } from './components/footer/footer.component';
+import { Page404NotFoundComponent } from './components/page404-not-found/page404-not-found.component';
 
 
 
@@ -21,7 +22,8 @@ import { FooterComponent } from './components/footer/footer.component';
   declarations: [
     AppComponent,
     NavbarComponent,
-    FooterComponent
+    FooterComponent,
+    Page404NotFoundComponent
   ],
   imports: [
     BrowserModule,

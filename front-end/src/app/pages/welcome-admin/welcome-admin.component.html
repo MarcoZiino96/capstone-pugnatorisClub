@@ -1,15 +1,15 @@
 <div class="container my-5">
 
-  <div class=" boxLink text-center">
-    <div class="btn icon" (click)="aggiornaDataBase()">
+  <div class=" text-center">
+    <a class="btn icon" (click)="aggiornaDataBase()">
       <i class="bi bi-arrow-clockwise fs-5"></i>
       <p>AGGIORNA DATABASE</p>
-    </div>
+    </a>
   </div>
 
-  <div class="row gap-4 justify-content-center my-5">
+  <div class="row gap-5 justify-content-center my-5">
 
-    <div class="card col-12  col-md-6 col-xl-2 mb-2" *ngFor="let u of iUsers">
+    <div class="card col-12  col-md-6  mb-2" *ngFor="let u of iUsers">
 
       <div class=" text-center pt-3">
         <img class=" imgCardUser rounded-circle" [src]="u.fotoProfilo" alt="imgUtente">

@@ -67,5 +67,46 @@ color: var(--arancione);
   box-shadow: 0 0 15px var(--arancione);
 }
 
+.container div.boxLink a.btn.icon{
+  width: 48px;
+  height: 48px;
+  padding-top: 1rem;
+  font-size: 1rem;
+  font-weight: bold;
+  background-color: var(--black);
+  border: 1px solid var(--arancione);
+  line-height: 20px;
+  @media(min-width:768px){
+    box-shadow: 0 0 15px var(--arancione) ;
+   }
+}
+
+.boxLink{
+  max-width: 100%;
+  position: fixed;
+  bottom: 80px;
+  right: 10px;
+  z-index: 2;
+  @media(min-width:768px){
+   top: 250px;
+   right: 20px;
+  }
+  @media(min-width:1024px){
+   right: 40px;
+  }
+  @media(min-width:1360px){
+   right: 200px;
+  }
+  @media(min-width:1440px){
+    right: 150px;
+   }
+  @media(min-width:1920px){
+   right: 300px;
+  }
+ }
+
+
+
+
 
 

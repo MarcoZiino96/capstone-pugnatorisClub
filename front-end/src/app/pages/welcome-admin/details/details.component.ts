@@ -12,29 +12,29 @@ import { IUser } from '../../../Models/interfaceUtente/i-user';
 })
 export class DetailsComponent {
 
-  abbonamenti!:IAbbonamento[];
-  user!:IUser;
-  showAbbonamenti!:boolean;
+  abbonamenti!: IAbbonamento[];
+  user!: IUser;
+  showAbbonamenti!: boolean;
 
-  constructor (
-    private authSvc:AuthService,
-    private abbonamentoSvc:AbbonamentoService,
-    private route:ActivatedRoute,
+  constructor(
+    private authSvc: AuthService,
+    private abbonamentoSvc: AbbonamentoService,
+    private route: ActivatedRoute,
     @Inject('Swal') private swal: any
-  ){}
+  ) { }
 
-  ngOnInit(){
-    this.route.params.subscribe((params:any)=>{
-      this.authSvc.getById(params.id).subscribe((res)=>{
+  ngOnInit() {
+    this.route.params.subscribe((params: any) => {
+      this.authSvc.getById(params.id).subscribe((res) => {
         this.user = res.response
       })
     })
 
-    this.route.params.subscribe((params:any) => {
-      this.authSvc.getAbbonamenti(params.id).subscribe((res)=>{
-        if(res.response.length === 0 ){
+    this.route.params.subscribe((params: any) => {
+      this.authSvc.getAbbonamenti(params.id).subscribe((res) => {
+        if (res.response.length === 0) {
           this.showAbbonamenti = false
-        }else{
+        } else {
           this.abbonamenti = res.response
           this.showAbbonamenti = true
         }
@@ -43,16 +43,32 @@ export class DetailsComponent {
     })
   }
 
-  deleteAbbonamento(id:number){
-    this.abbonamentoSvc.delete(id).subscribe(()=>{
-      this.abbonamenti = this.abbonamenti.filter(res => res.id !== id)
-      this.swal.fire({
-        title: "Good job!",
-        text: "Abbonamento eliminato con  successo!",
-        icon: "success",
-        confirmButtonText: "Chiudi"
-      })
+  deleteAbbonamento(id: number) {
+
+    this.swal.fire({
+      title: "Sei sicuro?",
+      text: "Premi su Chiudi per tornare indietro!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#d33",
+      cancelButtonColor: "#C65535",
+      cancelButtonText: "Chiudi",
+      confirmButtonText: "Si, voglio cancellarlo!"
+
+    }).then((result: { isConfirmed: boolean }) => {
+      if (result.isConfirmed) {
+        this.abbonamentoSvc.delete(id).subscribe(() => {
+          this.abbonamenti = this.abbonamenti.filter(res => res.id !== id)
+          this.swal.fire({
+            title: "Good job!",
+            text: "Abbonamento eliminato con  successo!",
+            icon: "success",
+            confirmButtonText: "Chiudi"
+          })
+        })
+      }
     })
   }
-
 }
+
+

@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { WelcomeGuard } from './guard/welcome.guard';
 import { WelcomeAdminGuard } from './guard/welcome-admin.guard';
+import { Page404NotFoundComponent } from './components/page404-not-found/page404-not-found.component';
 
 const routes: Routes = [
   {
@@ -24,7 +25,12 @@ const routes: Routes = [
 {
   path: 'welcomeAdmin', loadChildren: () => import('./pages/welcome-admin/welcome-admin.module').then(m => m.WelcomeAdminModule),
   canActivate:[WelcomeAdminGuard]
-}
+},{
+path: '404', component: Page404NotFoundComponent
+  },
+  {
+    path: '**', redirectTo: '/404'
+  },
 ];
 
 @NgModule({

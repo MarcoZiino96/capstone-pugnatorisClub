@@ -6,6 +6,12 @@
   padding: 0;
 }
 
+.row{
+  @media(min-width: 1400px) {
+    gap: 100px;
+  }
+}
+
 .imgCardUser{
   width: 150px;
   height: 180px;
