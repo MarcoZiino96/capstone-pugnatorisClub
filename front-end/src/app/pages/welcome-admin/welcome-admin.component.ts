@@ -3,6 +3,8 @@ import { Component, Inject } from '@angular/core';
 import { AuthService } from '../../Services/auth.service';
 import { ICompleteUser } from '../../Models/interfaceUtente/i-complete-user';
 import { AbbonamentoService } from '../../Services/abbonamento-service';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+
 
 @Component({
   selector: 'app-welcome-admin',
@@ -11,19 +13,41 @@ import { AbbonamentoService } from '../../Services/abbonamento-service';
 })
 export class WelcomeAdminComponent {
 
-  iUsers!:ICompleteUser[]
+  originalUsers!:ICompleteUser[]
+  iUsers!:ICompleteUser[];
+  searchUtenteForm!:FormGroup;
 
   constructor(
     private authSvc:AuthService,
     @Inject('Swal') private swal: any,
-    private abbonamentoSvc:AbbonamentoService
+    private abbonamentoSvc:AbbonamentoService,
+    private fb:FormBuilder
     ){}
 
 
   ngOnInit(){
-    this.authSvc.getAllUtenti().subscribe((users) =>{
-      this.iUsers = users.response.filter(user => user.ruolo !== "ADMIN");
+    this.searchUtenteForm = this.fb.group({
+      cercaUtente:this.fb.control("",[Validators.required])
     })
+
+    this.authSvc.getAllUtenti().subscribe((users) => {
+      this.originalUsers = users.response.filter(user => user.ruolo !== "ADMIN");
+      this.iUsers = this.originalUsers;
+    });
+
+    this.searchUtenteForm.get('cercaUtente')?.valueChanges.subscribe(value=>{
+      this.searchUsers(value)
+    })
+
+  }
+
+  searchUsers(string:string){
+    if(!string){
+      this.iUsers = this.originalUsers
+    }else{
+    this.iUsers = this.originalUsers.filter(user =>{
+    return  user.cognome.trim().toLowerCase().includes(string.trim().toLowerCase())})
+    }
   }
 
   deleteUtente(id:number){
@@ -42,6 +66,7 @@ export class WelcomeAdminComponent {
       if (result.isConfirmed) {
         this.authSvc.deleteUtente(id).subscribe(()=>{
           this.iUsers = this.iUsers.filter(user => user.id !== id)
+          this.originalUsers = this.originalUsers.filter(user => user.id !== id)
           this.swal.fire({
           title: "Cancellato!",
           text: "Utente cancellato corettamente.",
@@ -69,4 +94,5 @@ export class WelcomeAdminComponent {
       }
     })
   }
+
 }

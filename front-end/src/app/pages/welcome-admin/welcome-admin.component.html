@@ -1,6 +1,8 @@
 <div class="container my-5">
 
-  <div class=" text-center">
+
+
+  <div class=" text-center mt-5">
     <a class="btn icon" (click)="aggiornaDataBase()">
       <i class="bi bi-arrow-clockwise fs-5"></i>
       <p>AGGIORNA DATABASE</p>
@@ -8,6 +10,13 @@
   </div>
 
   <div class="row gap-5 justify-content-center my-5">
+
+    <form [formGroup]="searchUtenteForm">
+      <div class="form-floating">
+      <input class="form-control mt-5" type="text" formControlName="cercaUtente">
+      <label>Cerca un utente per cognome</label>
+      </div>
+    </form>
 
     <div class="card col-12  col-md-6  mb-2" *ngFor="let u of iUsers">
 
@@ -69,6 +78,7 @@
       </div>
 
     </div>
+
   </div>
 
 </div>
