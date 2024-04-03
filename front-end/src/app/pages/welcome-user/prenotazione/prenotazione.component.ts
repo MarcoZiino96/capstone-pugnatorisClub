@@ -145,7 +145,15 @@ export class PrenotazioneComponent {
               title: "Oops...",
               text: "Hai gia una prenotazione per questo corso"
             })
-          } if (error.error.message === "Il corso ha raggiunto il numero massimo di partecipanti") {
+          }
+          else if (error.error.message === "Questo utente ha gia un abbonamento per questo corso") {
+            this.swal.fire({
+              icon: "error",
+              title: "Oops...",
+              text: "Questo utente ha gia un abbonamento per questo corso"
+            })
+          }
+          else if (error.error.message === "Il corso ha raggiunto il numero massimo di partecipanti") {
             this.swal.fire({
               icon: "error",
               title: "Oops...",

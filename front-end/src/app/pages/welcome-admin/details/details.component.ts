@@ -4,6 +4,7 @@ import { AuthService } from './../../../Services/auth.service';
 import { Component, Inject } from '@angular/core';
 import { IAbbonamento } from '../../../Models/interfaceAbbonamento/i-abbonamento';
 import { IUser } from '../../../Models/interfaceUtente/i-user';
+import { IResponsePrenotazione } from '../../../Models/interfacePrenotazione/i-response-prenotazione';
 
 @Component({
   selector: 'app-details',
@@ -15,6 +16,8 @@ export class DetailsComponent {
   abbonamenti!: IAbbonamento[];
   user!: IUser;
   showAbbonamenti!: boolean;
+  showPrenotazioni!: boolean;
+  myPrenotazioni!: IResponsePrenotazione
 
   constructor(
     private authSvc: AuthService,
@@ -24,6 +27,7 @@ export class DetailsComponent {
   ) { }
 
   ngOnInit() {
+
     this.route.params.subscribe((params: any) => {
       this.authSvc.getById(params.id).subscribe((res) => {
         this.user = res.response
@@ -40,7 +44,23 @@ export class DetailsComponent {
         }
 
       })
+      this.authSvc.getPrenotazioni(params.id).subscribe((res => {
+        if (!res) {
+          this.swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: "Problemi di comunicazione con il server, controlla la tua conessione"
+          });
+        }
+        else if (res.response.length === 0) {
+          this.showPrenotazioni = false
+        } else {
+          this.myPrenotazioni = res
+          this.showPrenotazioni = true
+        }
+      }))
     })
+
   }
 
   deleteAbbonamento(id: number) {
