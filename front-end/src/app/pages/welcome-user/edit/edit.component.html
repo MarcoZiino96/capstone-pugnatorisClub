@@ -30,7 +30,8 @@
 
           <div class="my-3">
             <span *ngIf="!fileUrl">
-              <img class="rounded-circle" [src]="iUser.response.fotoProfilo">
+              <img class="rounded-circle" [src]="iUser.response.fotoProfilo" alt="fotoUtente"*ngIf="iUser.response.fotoProfilo">
+              <img class="rounded-circle" src="../../../../assets/img/download.png" alt="fotoUtente" *ngIf="!iUser.response.fotoProfilo">
             </span>
             <span *ngIf="fileUrl">
               <img class="rounded-circle" [src]="fileUrl" alt="Anteprima immagine">
