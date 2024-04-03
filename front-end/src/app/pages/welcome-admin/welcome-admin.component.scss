@@ -18,8 +18,15 @@
 }
 
 .card{
-  width: 250px;
-  box-shadow: 0 0 15px var(--arancione)
+  width: 290px;
+  box-shadow: 0 0 15px var(--arancione);
+  border-radius: 30px;
+  @media(min-width: 990px){
+    width: 350px;
+  }
+  @media(min-width: 1440px){
+    width: 450px;
+  }
 }
 
 .card-body{

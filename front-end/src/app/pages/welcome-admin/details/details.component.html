@@ -1,11 +1,10 @@
 <div class="container my-5">
 
-  <div class="d-flex justify-content-center">
+  <div class="boxLink d-flex flex-column">
 
-    <div class="btn icon" routerLink="/welcomeAdmin">
+    <a class="btn icon" routerLink="/welcomeAdmin">
       <i class="bi bi-arrow-left"></i>
-      <p>INDIETRO</p>
-    </div>
+    </a>
 
   </div>
 
@@ -16,14 +15,14 @@
       <p class=" nameUser fw-bold py-3">{{user.nome}} {{user.cognome}}</p>
     </div>
 
-    <h5 class="text-center text-white mb-3">ABBONAMENTI</h5>
+    <h5 class="text-center text-white mb-5">ABBONAMENTI</h5>
 
     <div class="row gap-3 justify-content-center">
       <div class="card d-flex  col-12 col-md-6" *ngFor="let a of abbonamenti">
 
         <div class="card-body">
 
-          <h6 class=" text-center card-title fw-bold">{{a.corso.categoria}}</h6>
+          <h5 class="  text-center card-title fw-bold">{{a.corso.categoria}}</h5>
 
           <hr>
 
@@ -75,7 +74,7 @@
 
   <div *ngIf="showPrenotazioni">
 
-    <h5 class="text-center text-white my-3">PRENOTAZIONI</h5>
+    <h5 class="text-center text-white my-5">PRENOTAZIONI</h5>
 
       <div class="row gap-3 justify-content-center pb-5">
 
@@ -83,6 +82,8 @@
           <div class="card-body text-center p-3">
 
             <h5 class="card-title fw-bold">{{p.corso.categoria}}</h5>
+
+            <hr>
 
             <p class="card-text">{{p.corso.descrizione}}</p>
 

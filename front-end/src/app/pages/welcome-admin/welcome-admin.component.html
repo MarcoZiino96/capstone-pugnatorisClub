@@ -2,20 +2,21 @@
 
 
 
-  <div class=" text-center mt-5">
+  <div class=" boxLink text-center mt-5">
     <a class="btn icon" (click)="aggiornaDataBase()">
       <i class="bi bi-arrow-clockwise fs-5"></i>
-      <p>AGGIORNA DATABASE</p>
     </a>
   </div>
 
   <div class="row gap-5 justify-content-center my-5">
 
     <form [formGroup]="searchUtenteForm">
-      <div class="form-floating">
+
+      <div class="form-floating container">
       <input class="form-control mt-5" type="text" formControlName="cercaUtente">
-      <label>Cerca un utente per cognome</label>
+      <label class="ms-2">Cerca un utente per cognome</label>
       </div>
+
     </form>
 
     <div class="card col-12  col-md-6  mb-2" *ngFor="let u of iUsers">
@@ -42,13 +43,14 @@
 
         </div>
 
-        <div class="d-flex justify-content-between">
+        <div class="d-flex justify-content-center">
 
           <div class="text-start">
             <p class="card-text">Data-Nascita</p>
             <p class=" fw-bold ">{{u.dataNascita}}</p>
           </div>
-          <div>
+
+          <div class="text-start">
             <p class="card-text">Username</p>
             <p class=" fw-bold">{{u.username}}</p>
           </div>
@@ -60,8 +62,6 @@
         <a [routerLink]="['details/', u.id]" class=" btnForm py-2 px-3 text-decoration-none text-white">
           Dettagli
         </a>
-
-
 
         <div class="d-flex justify-content-between align-items-center mt-3">
 
