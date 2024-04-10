@@ -2,6 +2,8 @@ package it.epicode.pugnatorisClub.controller;
 
 
 import com.cloudinary.Cloudinary;
+import com.cloudinary.provisioning.Account;
+import it.epicode.pugnatorisClub.enums.Ruolo;
 import it.epicode.pugnatorisClub.exception.BadRequestException;
 import it.epicode.pugnatorisClub.exception.CustomResponse;
 import it.epicode.pugnatorisClub.exception.LoginFaultException;
@@ -87,6 +89,7 @@ public class UtenteController {
         return utenteService.updateRole(username, role);
 
     }
+
     @PatchMapping("/edit/password/{id}")
     public ResponseEntity<CustomResponse> uploadPassword(@PathVariable long id, @RequestBody @Validated PasswordRequest passwordRequest, BindingResult bindingResult){
 
@@ -99,5 +102,11 @@ public class UtenteController {
         if (encoder.matches(passwordRequest.getNewPassword(), utente.getPassword())) throw  new RuntimeException("Password vecchia uguale a quella nuova");
 
         return CustomResponse.success(HttpStatus.OK.toString(),utenteService.updatePassword(id, passwordRequest.getNewPassword()), HttpStatus.OK);
+    }
+
+    @PatchMapping("/edit/role/{username}")
+    public ResponseEntity<CustomResponse> uploadRole(@PathVariable String username, @RequestParam("ruolo")  String role){
+
+        return CustomResponse.success(HttpStatus.OK.toString(),utenteService.updateRole(username, role), HttpStatus.OK);
     }
 }

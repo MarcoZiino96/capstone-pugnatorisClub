@@ -76,7 +76,6 @@ public class UtenteService {
         Utente u = getUtenteByUsername(username);
         u.setRuolo(Ruolo.valueOf(ruolo));
         return utenteRepository.save(u);
-
     }
 
     public Utente uploadFotoProfilo(long id, String url){
