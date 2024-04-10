@@ -10,6 +10,7 @@ import it.epicode.pugnatorisClub.exception.LoginFaultException;
 import it.epicode.pugnatorisClub.model.ILoginResponse;
 import it.epicode.pugnatorisClub.model.Utente;
 import it.epicode.pugnatorisClub.request.PasswordRequest;
+import it.epicode.pugnatorisClub.request.RoleRequest;
 import it.epicode.pugnatorisClub.request.UtenteRequest;
 import it.epicode.pugnatorisClub.request.UtenteRequestUpdate;
 import it.epicode.pugnatorisClub.service.UtenteService;
@@ -82,14 +83,6 @@ public class UtenteController {
             return CustomResponse.success(HttpStatus.OK.toString(), utente, HttpStatus.OK);
     }
 
-
-    @PatchMapping("/{username}")
-    public Utente changeRole(@PathVariable String username, @RequestBody String role){
-
-        return utenteService.updateRole(username, role);
-
-    }
-
     @PatchMapping("/edit/password/{id}")
     public ResponseEntity<CustomResponse> uploadPassword(@PathVariable long id, @RequestBody @Validated PasswordRequest passwordRequest, BindingResult bindingResult){
 
@@ -105,9 +98,11 @@ public class UtenteController {
     }
 
 
-    @PatchMapping("/edit/role/{username}/{role}")
-    public ResponseEntity<CustomResponse> uploadRole(@PathVariable String username, @PathVariable  String role){
+    @PatchMapping("/edit/role/{id}")
+    public ResponseEntity<CustomResponse> uploadRole(@PathVariable long id, @RequestBody @Validated RoleRequest roleRequest, BindingResult bindingResult){
+        if (bindingResult.hasErrors())
+            throw new BadRequestException(bindingResult.getAllErrors().stream().map(DefaultMessageSourceResolvable::getDefaultMessage).toList().toString());
 
-        return CustomResponse.success(HttpStatus.OK.toString(),utenteService.updateRole(username, role), HttpStatus.OK);
+        return CustomResponse.success(HttpStatus.OK.toString(),utenteService.updateRole(id, roleRequest.getRuolo()), HttpStatus.OK);
     }
 }

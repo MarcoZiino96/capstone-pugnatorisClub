@@ -126,9 +126,12 @@ export class CreateComponent{
 
   updateRole(){
 
-    const selectedRuolo = this.formRuolo.get('selectedDRuolo')?.value;
+    const selectedRuolo = this.formRuolo.get('selectedRuolo')?.value;
 
-    this.authSvc.uploadRole(this.iUser.username, selectedRuolo).subscribe((res)=>{
+    console.log(selectedRuolo);
+
+
+    this.authSvc.uploadRole(this.iUser.id, selectedRuolo).subscribe((res)=>{
       if (res) {
         this.swal.fire({
           title: "Good job!",

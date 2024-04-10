@@ -72,8 +72,8 @@ public class UtenteService {
         utenteRepository.delete(utente);
     }
 
-    public Utente updateRole(String username, String ruolo) throws NotFoundException {
-        Utente u = getUtenteByUsername(username);
+    public Utente updateRole(long id, String ruolo){
+        Utente u = getUtenteById(id);
         u.setRuolo(Ruolo.valueOf(ruolo));
         return utenteRepository.save(u);
     }
