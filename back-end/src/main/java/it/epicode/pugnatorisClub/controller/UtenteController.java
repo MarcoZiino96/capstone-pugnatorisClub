@@ -105,8 +105,8 @@ public class UtenteController {
     }
 
 
-    @PatchMapping("/edit/role/{username}")
-    public ResponseEntity<CustomResponse> uploadRole(@PathVariable String username, @RequestParam("ruolo")  String role){
+    @PatchMapping("/edit/role/{username}/{role}")
+    public ResponseEntity<CustomResponse> uploadRole(@PathVariable String username, @PathVariable  String role){
 
         return CustomResponse.success(HttpStatus.OK.toString(),utenteService.updateRole(username, role), HttpStatus.OK);
     }

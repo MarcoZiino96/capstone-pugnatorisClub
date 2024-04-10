@@ -24,6 +24,7 @@ export class CreateComponent{
     nome: '',
     cognome: '',
     email: '',
+    username: '',
     fotoProfilo: null,
     dataNascita: null,
   };
@@ -70,6 +71,10 @@ export class CreateComponent{
     selectedDurata: ["", Validators.required],
   })
 
+  formRuolo: FormGroup = this.fb.group({
+    selectedRuolo: ["", Validators.required]
+  })
+
 
 
   addAbbonamento(){
@@ -113,6 +118,22 @@ export class CreateComponent{
           icon: "error",
           title: "Oops...",
           text: "Qualcosa è andato storto",
+          confirmButtonText: "Chiudi"
+        })
+      }
+    })
+  }
+
+  updateRole(){
+
+    const selectedRuolo = this.formRuolo.get('selectedDRuolo')?.value;
+
+    this.authSvc.uploadRole(this.iUser.username, selectedRuolo).subscribe((res)=>{
+      if (res) {
+        this.swal.fire({
+          title: "Good job!",
+          text: "Ruolo cambiato con successo!",
+          icon: "success",
           confirmButtonText: "Chiudi"
         })
       }

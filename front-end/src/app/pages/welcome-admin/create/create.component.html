@@ -5,6 +5,23 @@
     <i class="bi bi-arrow-left"></i>
   </a>
 </div>
+<div class=" text-center py-5">
+
+<h5 class="text-center fw-bold text-white py-3">
+  Modifica Ruolo Utente
+</h5>
+
+  <form [formGroup]="formRuolo">
+    <select class="form-select" aria-label="Default select example" formControlName="selectedRuolo">
+      <option value="" hidden disabled>Scegli una ruolo</option>
+      <option value="USER">USER</option>
+      <option value="ADMIN">ADMIN</option>
+    </select>
+    <div class="text-center py-2">
+      <button (click)="updateRole()" [disabled]="!formRuolo.valid" class="btnForm py-2">Cambia</button>
+    </div>
+  </form>
+</div>
 
 
   <div class="row gap-3 justify-content-center">
@@ -19,8 +36,6 @@
         </div>
 
         <div class=" cardBody text-center fw-bold">
-
-
 
             <div class="text-center">
               <p class="card-text">Nome</p>
@@ -41,8 +56,6 @@
         </div>
 
       </div>
-
-
     </div>
   </div>
 
