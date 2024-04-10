@@ -104,6 +104,7 @@ public class UtenteController {
         return CustomResponse.success(HttpStatus.OK.toString(),utenteService.updatePassword(id, passwordRequest.getNewPassword()), HttpStatus.OK);
     }
 
+
     @PatchMapping("/edit/role/{username}")
     public ResponseEntity<CustomResponse> uploadRole(@PathVariable String username, @RequestParam("ruolo")  String role){
 
