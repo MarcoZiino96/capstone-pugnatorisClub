@@ -8,6 +8,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AbbonamentoService } from '../../../Services/abbonamento-service';
 import { catchError } from 'rxjs';
 import { ISendAbbonamento } from '../../../Models/interfaceAbbonamento/i-send-abbonamento';
+import { ChangeRole } from '../../../Models/interfaceUtente/change-role';
 
 
 @Component({
@@ -35,6 +36,10 @@ export class CreateComponent{
     utente:0,
     durata:""
   };
+
+  changeRole:ChangeRole={
+    ruolo:""
+  }
 
   constructor(
   private corsoSvc: CorsoService,
@@ -127,11 +132,9 @@ export class CreateComponent{
   updateRole(){
 
     const selectedRuolo = this.formRuolo.get('selectedRuolo')?.value;
+    this.changeRole.ruolo = selectedRuolo
 
-    console.log(selectedRuolo);
-
-
-    this.authSvc.uploadRole(this.iUser.id, selectedRuolo).subscribe((res)=>{
+    this.authSvc.uploadRole(this.iUser.id, this.changeRole).subscribe((res)=>{
       if (res) {
         this.swal.fire({
           title: "Good job!",

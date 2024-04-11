@@ -31,7 +31,7 @@ export class WelcomeAdminComponent {
     })
 
     this.authSvc.getAllUtenti().subscribe((users) => {
-      this.originalUsers = users.response.filter(user => user.ruolo !== "ADMIN");
+      this.originalUsers = users.response;
       this.iUsers = this.originalUsers;
     });
 
