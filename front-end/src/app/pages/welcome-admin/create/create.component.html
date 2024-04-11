@@ -33,7 +33,9 @@
       <div class="d-flex justify-content-center align-items-center">
 
         <div class=" text-center pt-3">
-          <img class=" imgCardUser rounded-circle" [src]="iUser.fotoProfilo" alt="imgUtente">
+          <img class=" imgCardUser rounded-circle" [src]="iUser.fotoProfilo" alt="imgUtente"*ngIf="iUser.fotoProfilo">
+        <img class=" imgCardUser rounded-circle" src="../../../assets/img/download.png" alt="imgUtente" *ngIf="!iUser.fotoProfilo">
+
           <h5 class="card-title">{{iUser.ruolo}}</h5>
         </div>
 

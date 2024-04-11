@@ -60,7 +60,6 @@ export class CreateComponent{
             icon: "error",
             title: "Oops...",
             text: "Nessun utente trovato"
-
           });
         }
         this.iUser = res.response
@@ -142,6 +141,7 @@ export class CreateComponent{
           icon: "success",
           confirmButtonText: "Chiudi"
         })
+        this.iUser.ruolo = selectedRuolo
       }
     })
   }
