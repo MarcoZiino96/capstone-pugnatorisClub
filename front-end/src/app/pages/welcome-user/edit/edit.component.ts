@@ -42,6 +42,7 @@ export class EditComponent {
       nome: '',
       cognome: '',
       email: '',
+      username: '',
       fotoProfilo: null,
       dataNascita: null,
     },

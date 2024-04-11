@@ -1,5 +1,6 @@
+import { ChangeRole } from './../Models/interfaceUtente/change-role';
 
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Inject, Injectable } from '@angular/core';
 import { IAuthData } from '../Models/interfaceUtente/i-auth-data';
 import { IRegister } from '../Models/interfaceUtente/i-register';
@@ -125,6 +126,10 @@ export class AuthService {
 
 getAbbonamenti(id:number){
   return this.http.get<IResponseAbbonamento>(`${environment.backEndUrl}/utente/abbonamenti/${id}`);
+}
+
+uploadRole(id:number, role:ChangeRole){
+  return this.http.patch(`${environment.backEndUrl}/utente/edit/role/${id}`, role)
 }
 
 }
