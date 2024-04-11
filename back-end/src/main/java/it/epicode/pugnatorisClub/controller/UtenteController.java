@@ -87,6 +87,7 @@ public class UtenteController {
         return utenteService.updateRole(username, role);
 
     }
+
     @PatchMapping("/edit/password/{id}")
     public ResponseEntity<CustomResponse> uploadPassword(@PathVariable long id, @RequestBody @Validated PasswordRequest passwordRequest, BindingResult bindingResult){
 
