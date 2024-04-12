@@ -133,8 +133,9 @@ export class CreateComponent{
     const selectedRuolo = this.formRuolo.get('selectedRuolo')?.value;
     this.changeRole.ruolo = selectedRuolo
 
-    this.authSvc.uploadRole(this.iUser.id, this.changeRole).subscribe((res)=>{
-      if (res) {
+    this.authSvc.uploadRole(this.iUser.id, this.changeRole)
+    .subscribe((res)=>{
+     if (res) {
         this.swal.fire({
           title: "Good job!",
           text: "Ruolo cambiato con successo!",

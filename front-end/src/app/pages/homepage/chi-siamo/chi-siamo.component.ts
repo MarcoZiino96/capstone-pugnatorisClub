@@ -8,6 +8,7 @@ import { AuthService } from '../../../Services/auth.service';
 })
 export class ChiSiamoComponent {
 
+
   images = [
     "../../../../assets/img/palestra1.jpg",
     "../../../../assets/img/palestra2.jpg",

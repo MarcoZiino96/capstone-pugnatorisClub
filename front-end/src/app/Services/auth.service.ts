@@ -13,6 +13,7 @@ import { ChangePassword } from '../Models/interfaceUtente/change-password';
 import { IResponsePrenotazione } from '../Models/interfacePrenotazione/i-response-prenotazione';
 import { IResponseArrayData } from '../Models/interfaceUtente/i-response-array-data';
 import { IResponseAbbonamento } from '../Models/interfaceAbbonamento/i-response-abbonamento';
+import { ICompleteUser } from '../Models/interfaceUtente/i-complete-user';
 
 
 @Injectable({
@@ -127,7 +128,7 @@ getAbbonamenti(id:number){
   return this.http.get<IResponseAbbonamento>(`${environment.backEndUrl}/utente/abbonamenti/${id}`);
 }
 
-uploadRole(id:number, role:ChangeRole){
-  return this.http.patch(`${environment.backEndUrl}/utente/edit/role/${id}`, role)
+uploadRole(id:number, role:ChangeRole):Observable<ICompleteUser>{
+  return this.http.patch<ICompleteUser>(`${environment.backEndUrl}/utente/edit/role/${id}`, role)
 }
 }
