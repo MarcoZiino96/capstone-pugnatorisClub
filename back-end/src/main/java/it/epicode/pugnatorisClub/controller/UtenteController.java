@@ -19,6 +19,7 @@ import org.springframework.context.support.DefaultMessageSourceResolvable;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.http.converter.json.GsonBuilderUtils;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
@@ -103,6 +104,9 @@ public class UtenteController {
         if (bindingResult.hasErrors())
             throw new BadRequestException(bindingResult.getAllErrors().stream().map(DefaultMessageSourceResolvable::getDefaultMessage).toList().toString());
 
+        Utente utente = utenteService.getUtenteById(id);
+
+        if(utente.getRuolo().toString().equals(roleRequest.getRuolo())) throw  new RuntimeException("Questo utente ha già questo ruolo.");
         return CustomResponse.success(HttpStatus.OK.toString(),utenteService.updateRole(id, roleRequest.getRuolo()), HttpStatus.OK);
     }
 }
