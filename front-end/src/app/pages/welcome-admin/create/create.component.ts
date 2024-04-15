@@ -134,6 +134,17 @@ export class CreateComponent{
     this.changeRole.ruolo = selectedRuolo
 
     this.authSvc.uploadRole(this.iUser.id, this.changeRole)
+    .pipe((catchError(error =>{
+      if(error.error.message === "Questo utente ha già questo ruolo."){
+        this.swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: "Questo utente ha già questo ruolo",
+          confirmButtonText: "Chiudi"
+        })
+      }
+      throw error;
+    })))
     .subscribe((res)=>{
      if (res) {
         this.swal.fire({
