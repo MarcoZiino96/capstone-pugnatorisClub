@@ -1,38 +1,48 @@
 <div class="boxContainer text-center">
 
-  <div class="imageHome"></div>
-
   <div class="container">
 
     <div class="content">
 
-      <span class="animatedSpan">
-        <h2 class=" textColor"> DAL 2010</h2>
-        <h2 class=" textNormal">CON PASSIONE</h2>
-        <p class=" pGeneral text-white">
-          Offriamo un servizio per allenare corpo e mente nella disciplina che più preferisci
-        </p>
-        <a class="btn btnGeneral" routerLink="/chi-siamo" >Chi siamo</a>
-      </span>
+      <div class="animatedSpan"
+      [ngStyle]="{'background-image':'url('+'../../../assets/img/OIG2.v15v9m9tAHLCs51uW.jpeg'+')'}">
+        <span class="boxText">
+          <h2 class=" textColor"> DAL 2010</h2>
+          <h2 class=" textNormal">CON PASSIONE</h2>
+          <p class=" pGeneral text-white">
+            Offriamo un servizio per allenare corpo e mente nella disciplina che più preferisci
+          </p>
+          <a class="btn btnGeneral" routerLink="/chi-siamo">Chi siamo</a>
+        </span>
+      </div>
 
-      <span class="animatedSpan">
-        <h2 class=" textColor"> REGISTRATI</h2>
-        <h2 class=" textNormal">PRENOTA UNA LEZIONE</h2>
-        <p class=" pGeneral text-white">
-          Una volta registrato, puoi prenotare una lezione di prova senza nessun vincolo.
-        </p>
-        <a  class="btn btnGeneral" routerLink="/auth/register">Registrati</a>
-      </span>
+      <div class="animatedSpan"
+      [ngStyle]="{'background-image':'url('+'../../../assets/img/OIG4.jpeg'+')'}">
+        <span class="boxText">
 
-      <span class="animatedSpan">
-        <h2 class=" textColor"> I NOSTRI</h2>
-        <h2 class=" textNormal"> INSEGNANTI</h2>
-        <p class=" pGeneral text-white">
-          Con un' ampia esperienza costruita negli anni, sapranno guidarti in base alle tue esigenze
-          e dimistichezza.
-        </p>
-        <a class="btn btnGeneral" routerLink="/maestri" >I nostri insegnanti</a>
-      </span>
+          <h2 class=" textColor"> REGISTRATI</h2>
+          <h2 class=" textNormal">PRENOTA UNA LEZIONE</h2>
+          <p class=" pGeneral text-white">
+            Una volta registrato, puoi prenotare una lezione di prova senza nessun vincolo.
+          </p>
+          <a class="btn btnGeneral" routerLink="/auth/register">Registrati</a>
+        </span>
+      </div>
+
+      <div class="animatedSpan"
+      [ngStyle]="{'background-image':'url('+'../../../assets/img/OIG2.jpeg'+')'}">
+      >
+        <span class="boxText">
+          <h2 class=" textColor"> I NOSTRI</h2>
+          <h2 class=" textNormal"> INSEGNANTI</h2>
+          <p class=" pGeneral text-white">
+            Con un' ampia esperienza costruita negli anni, sapranno guidarti in base alle tue esigenze
+            e dimistichezza.
+          </p>
+          <a class="btn btnGeneral" routerLink="/maestri">I nostri insegnanti</a>
+        </span>
+      </div>
+
     </div>
 
   </div>

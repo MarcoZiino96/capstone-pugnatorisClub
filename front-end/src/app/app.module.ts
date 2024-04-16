@@ -30,8 +30,7 @@ import { Page404NotFoundComponent } from './components/page404-not-found/page404
     AppRoutingModule,
     NgbModule,
     ReactiveFormsModule,
-    HttpClientModule,
-    NgbCarouselModule
+    HttpClientModule
   ],
   providers: [
     {

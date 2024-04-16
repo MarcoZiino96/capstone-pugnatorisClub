@@ -4,7 +4,7 @@ import { HomepageRoutingModule } from './homepage-routing.module';
 import { HomepageComponent } from './homepage.component';
 import { ChiSiamoComponent } from './chi-siamo/chi-siamo.component';
 import { MaestriComponent } from './maestri/maestri.component';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbCarouselModule, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 @NgModule({
@@ -17,7 +17,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
   imports: [
     CommonModule,
     HomepageRoutingModule,
-    NgbModule
+    NgbModule,
+    NgbCarouselModule
   ]
 })
 export class HomepageModule { }

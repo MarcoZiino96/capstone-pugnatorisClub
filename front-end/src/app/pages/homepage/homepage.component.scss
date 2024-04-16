@@ -1,13 +1,39 @@
 
 .boxContainer {
-  position: relative;
   width: 100vw;
-  height: 80vh;
+  height: 100vh;
 }
 
-.imageHome{
+// .imageHome{
+//   position: absolute;
+//   background-image: url("../../../assets/img/photoHome.jpeg");
+//   top: 0;
+//   left: 0;
+//   width: 100%;
+//   height: 100%;
+//   background-size: cover;
+//   background-repeat: no-repeat;
+//   background-position: center center;
+// }
+
+
+// .imageHome::after {
+//   content: "";
+//   position: absolute;
+//   top: 0;
+//   left: 0;
+//   width: 100%;
+//   height: 100%;
+//   background-color: rgba(0, 0, 0, 0.5);
+// }
+
+.content {
+  width: 100%;
+  height: 100%;
+}
+
+.animatedSpan{
   position: absolute;
-  background-image: url("../../../assets/img/photoHome.jpeg");
   top: 0;
   left: 0;
   width: 100%;
@@ -15,26 +41,13 @@
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
-}
-
-.imageHome::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
-}
-
-.content {
-  width: 100%;
-  height: 100%;
+  animation: assolvenza 22s infinite;
+  opacity: 0;
 }
 
 .textColor, .textNormal{
   font-weight:700;
-  font-size: 2.2em;
+  font-size: 1.7rem;
   @media(min-width: 1400px){
     font-size: 2.6rem;
   }
@@ -66,37 +79,62 @@ font-size: 1rem;
   background-color: var(--arancione);
 }
 
-div.content span.animatedSpan{
-  position:absolute;
+// div.content div.animatedSpan{
+//   right:8px;
+//   @media(min-width:768px){
+//     right: 20px;
+//   }
+//   @media(min-width:2000px){
+//     right: 25px;
+//   }
+// }
 
-  left: 5px;
-  animation: assolvenza 22s infinite;
-  opacity: 0;
-  @media(min-width:768px){
-    right: 20px;
-  }
-  @media(min-width:2000px){
-    right: 25px;
-  }
-}
+.boxText{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color:rgba(0, 0, 0, 0.6);
+  padding: 5px;
+  border-radius: 30px;
+ }
 
-div.content span:nth-of-type(1) {
+div.content div:nth-of-type(1) {
   animation-delay: 1s;
+  // background-image: url("../../../assets/img/photoHome.jpeg");
 }
 
-div.content span:nth-of-type(2) {
+div.content div:nth-of-type(2) {
   animation-delay: 8s;
+  // background-image: url("../../../assets/img/motto.png");
 }
 
-div.content span:nth-of-type(3) {
+div.content div:nth-of-type(3) {
   animation-delay: 16s;
+  // background-image: url("../../../assets/img/kick-boxing.jpeg");
+
 }
 
 @keyframes assolvenza{
-  0%{opacity:0; transform:translateY(60%)}
-  20%{ opacity: 1; transform:translateY(0%)}
-  60%{opacity: 0; transform:translateY(-120%)}
-  100%{opacity: 0;transform:translateY(60%)}
+  0%{opacity:0;
+    //  transform:translateY(60%)
+    transform: scale(1);
+    }
+  20%{ opacity: 1;
+    // transform:translateY(0%)
+    transform: scale(1.2);
+
+  }
+
+  60%{opacity: 0;
+    //  transform:translateY(-120%)
+    transform: scale(1.4);
+
+    }
+  100%{opacity: 0;
+    // transform:translateY(60%)
+    transform: scale(1.5);
+  }
 }
 
 
