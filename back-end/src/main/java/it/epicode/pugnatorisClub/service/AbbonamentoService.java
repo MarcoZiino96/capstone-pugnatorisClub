@@ -96,5 +96,4 @@ public class AbbonamentoService {
                 "SCADENZA: "+ abbonamento.getDataScadenza());
         javaMailSender.send(message);
     }
-
 }
