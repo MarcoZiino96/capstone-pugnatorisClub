@@ -9,6 +9,8 @@ import it.epicode.pugnatorisClub.model.Utente;
 import it.epicode.pugnatorisClub.repository.AbbonamentoRepository;
 import it.epicode.pugnatorisClub.request.AbbonamentoRequest;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -20,16 +22,19 @@ import java.util.List;
 public class AbbonamentoService {
 
     @Autowired
-    AbbonamentoRepository abbonamentoRepository;
+    private AbbonamentoRepository abbonamentoRepository;
 
     @Autowired
-    CorsoService corsoService;
+    private CorsoService corsoService;
 
     @Autowired
-    UtenteService utenteService;
+    private UtenteService utenteService;
 
     @Autowired
-    PrenotazioneService prenotazioneService;
+    private PrenotazioneService prenotazioneService;
+
+    @Autowired
+    private JavaMailSender javaMailSender;
 
     public List<Abbonamento> getAll(){
         return abbonamentoRepository.findAll();
@@ -51,6 +56,7 @@ public class AbbonamentoService {
         abbonamento.setCorso(corso);
         abbonamento.setUtente(utente);
         abbonamento.setAbbonamento();
+        sendEmailAbbonamento(utente.getEmail(), abbonamento);
         return abbonamentoRepository.save(abbonamento);
     }
 
@@ -76,6 +82,19 @@ public class AbbonamentoService {
                 prenotazioneService.delete(prenotazione.getId());
             }
         }
+    }
+
+    public void sendEmailAbbonamento(String email,Abbonamento abbonamento){
+        SimpleMailMessage message = new SimpleMailMessage();
+        message.setTo(email);
+        message.setSubject("Complimenti abbonamento per il corso di "+abbonamento.getCorso().getCategoria() +" avvenuta con successo");
+        message.setText(abbonamento.getUtente().getNome()+" Ti è stato aggiunto un abbonamento presso la palestra Pugnatoris Club");
+        message.setText("Ecco i tuoi dettagli del tuo abbonamento"+"\n"+
+                "CORSO: "+ abbonamento.getCorso().getCategoria()+"\n"+
+                "DURATA: "+ abbonamento.getDurata()+"\n"+
+                "ATTIVAZIONE: "+ abbonamento.getDataAttivazione()+"\n"+
+                "SCADENZA: "+ abbonamento.getDataScadenza());
+        javaMailSender.send(message);
     }
 
 }
