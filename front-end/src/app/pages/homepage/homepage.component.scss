@@ -1,7 +1,10 @@
 
 .boxContainer {
-  width: 100vw;
+  width: 100%;
   height: 100vh;
+  @media(min-width:300){
+    height: 50vh;
+  }
 }
 
 // .imageHome{
@@ -34,7 +37,7 @@
 
 .animatedSpan{
   position: absolute;
-  top: 0;
+  top: 90px;
   left: 0;
   width: 100%;
   height: 100%;
@@ -49,10 +52,10 @@
   font-weight:700;
   font-size: 1.7rem;
   @media(min-width: 1400px){
-    font-size: 2.6rem;
+    font-size: 2rem;
   }
   @media(min-width: 1900px){
-    font-size: 3rem;
+    font-size: 2.4rem;
   }
 }
 
@@ -68,10 +71,10 @@
 .btnGeneral, .pGeneral{
 font-size: 1rem;
 @media(min-width: 1400px){
-  font-size: 2rem;
+  font-size: 1.5rem;
 }
 @media(min-width: 1400px){
-  font-size: 2.6rem;
+  font-size: 2rem;
 }
 }
 
@@ -79,62 +82,73 @@ font-size: 1rem;
   background-color: var(--arancione);
 }
 
-// div.content div.animatedSpan{
-//   right:8px;
-//   @media(min-width:768px){
-//     right: 20px;
-//   }
-//   @media(min-width:2000px){
-//     right: 25px;
-//   }
-// }
+div.content div.animatedSpan{
+
+  @media(min-width:1900px){
+    right: 25px;
+  }
+}
 
 .boxText{
   position: absolute;
   top: 50%;
   left: 50%;
+  width: 250px;
   transform: translate(-50%, -50%);
+  animation: boxTextAssolvenza 22s infinite;
+  opacity: 0;
   background-color:rgba(0, 0, 0, 0.6);
   padding: 5px;
   border-radius: 30px;
+  @media(min-width:768px){
+    width: 300px;
+  }
+  @media(min-width:1400px){
+    width: 500px;
+  }
+
  }
 
-div.content div:nth-of-type(1) {
+div.content div:nth-of-type(1),
+div.content span:nth-of-type(1) {
   animation-delay: 1s;
-  // background-image: url("../../../assets/img/photoHome.jpeg");
 }
 
-div.content div:nth-of-type(2) {
+div.content div:nth-of-type(2),
+div.content span:nth-of-type(2) {
   animation-delay: 8s;
-  // background-image: url("../../../assets/img/motto.png");
 }
 
-div.content div:nth-of-type(3) {
-  animation-delay: 16s;
-  // background-image: url("../../../assets/img/kick-boxing.jpeg");
 
+div.content div:nth-of-type(3),
+div.content span:nth-of-type(3) {
+  animation-delay: 16s;
 }
 
 @keyframes assolvenza{
   0%{opacity:0;
-    //  transform:translateY(60%)
     transform: scale(1);
     }
   20%{ opacity: 1;
-    // transform:translateY(0%)
     transform: scale(1.2);
-
   }
-
   60%{opacity: 0;
-    //  transform:translateY(-120%)
     transform: scale(1.4);
-
     }
   100%{opacity: 0;
-    // transform:translateY(60%)
     transform: scale(1.5);
   }
+}
+
+  @keyframes boxTextAssolvenza{
+    0%{opacity:0;
+      }
+    20%{ opacity: 1;
+    }
+    60%{opacity: 0;
+      }
+    100%{opacity: 0;
+    }
 }
 
 
