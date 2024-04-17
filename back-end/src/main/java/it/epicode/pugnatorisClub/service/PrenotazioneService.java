@@ -8,6 +8,8 @@ import it.epicode.pugnatorisClub.request.PrenotazioneRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
@@ -17,15 +19,18 @@ import java.util.List;
 public class PrenotazioneService {
 
    @Autowired
-    PrenotazioneRepository prenotazioneRepository;
+    private PrenotazioneRepository prenotazioneRepository;
    @Autowired
-    CorsoService corsoService;
+    private CorsoService corsoService;
 
    @Autowired
-    UtenteService utenteService;
+    private UtenteService utenteService;
 
     @Autowired
-    TurnoService turnoService;
+    private TurnoService turnoService;
+
+    @Autowired
+    private JavaMailSender javaMailSender;
 
    public List<Prenotazione> getAll(){
      return   prenotazioneRepository.findAll();
@@ -53,9 +58,9 @@ public class PrenotazioneService {
        prenotazione.setCorso(corso);
        prenotazione.setUtente(utente);
        prenotazione.setDataPrenotazione(LocalDate.now());
-
        prenotazione.setTurno(turno);
        prenotazione.setDataScadenza(Prenotazione.calcolaDataScadenza(prenotazione.getDataPrenotazione(),turno.getGiornoLezione()));
+       sendEmailPrenotation(utente.getEmail(), utente, corso, prenotazione);
 
       return prenotazioneRepository.save(prenotazione);
    }
@@ -84,8 +89,19 @@ public class PrenotazioneService {
     public void delete(int id){
        Prenotazione prenotazione = getPrenotazioneById(id);
        prenotazioneRepository.delete(prenotazione);
+    }
 
-
+    public void sendEmailPrenotation(String email, Utente utente, Corso corso, Prenotazione prenotazione){
+        SimpleMailMessage message = new SimpleMailMessage();
+        message.setTo(email);
+        message.setSubject("Complimenti prenotazione per il corso di "+corso.getCategoria() +" avvenuta con successo");
+        message.setText(utente.getNome()+" hai prenotato un lezione gratuita di prova presso la palestra Pugnatoris Club");
+        message.setText("Ecco i tuoi dettagli della prenotazione"+"\n"+
+                         "CORSO: "+ corso.getCategoria()+"\n"+
+                         "DATA LEZIONE: "+ prenotazione.getDataPrenotazione()+"\n"+
+                         "START: "+ prenotazione.getTurno().getInizioLezione()+"\n"+
+                         "FINISH: "+ prenotazione.getTurno().getFineLezione());
+        javaMailSender.send(message);
     }
 }
 

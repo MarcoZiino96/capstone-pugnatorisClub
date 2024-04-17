@@ -21,10 +21,10 @@ import java.util.Optional;
 public class TurnoService{
 
     @Autowired
-    TurnoRepository turnoRepository;
+   private TurnoRepository turnoRepository;
 
     @Autowired
-    CorsoService corsoService;
+   private CorsoService corsoService;
 
     public List<Turno> getAll(){
         return turnoRepository.findAll();

@@ -24,10 +24,10 @@ import java.util.List;
 public class UtenteService {
 
     @Autowired
-    UtenteRepository utenteRepository;
+    private UtenteRepository utenteRepository;
 
     @Autowired
-    PasswordEncoder encoder;
+    private PasswordEncoder encoder;
 
     @Autowired
     private JavaMailSenderImpl javaMailSender;
@@ -54,7 +54,7 @@ public class UtenteService {
         utente.setPassword(encoder.encode(utenteRequest.getPassword()));
         utente.setRuolo(Ruolo.USER);
         utente.setEmail(utenteRequest.getEmail());
-        sendEmail(utenteRequest.getEmail());
+        sendEmailRegister(utenteRequest.getEmail());
         return  utenteRepository.save(utente);
     }
 
@@ -86,10 +86,10 @@ public class UtenteService {
 
     }
 
-    public void sendEmail(String email){
+    public void sendEmailRegister(String email){
         SimpleMailMessage message = new SimpleMailMessage();
         message.setTo(email);
-        message.setSubject("Registrazione alla palestra PugnatorisClub");
+        message.setSubject("Registrazione di alla palestra PugnatorisClub");
         message.setText("Benvenuto sulla nostra applicazione, registrazione avvenuta con successo. Dai un'occhiata ai nostri corsi e prenota una lezione di prova gratuita.");
         javaMailSender.send(message);
     }
