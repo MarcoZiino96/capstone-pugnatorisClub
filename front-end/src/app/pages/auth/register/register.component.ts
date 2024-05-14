@@ -18,6 +18,7 @@ export class RegisterComponent {
   registered : boolean=false;
   showPassword: boolean = false;
   showConfirmPassword: boolean = false;
+  loader: boolean = false;
 
 
   constructor(private fb:FormBuilder, private authSvc:AuthService,
@@ -176,6 +177,7 @@ export class RegisterComponent {
     const registerData: any = this.registerForm.value
     registerData.dataNascita = new Date(registerData.dataNascita)
     delete registerData.confirmPassword
+    this.loader = true
     this.authSvc.signUp(registerData)
     .pipe(catchError(error=>{
       if(error.error.message){
@@ -196,6 +198,7 @@ export class RegisterComponent {
     )
     .subscribe(res =>{
     this.registered = true
+    this.loader = false;
     });
 }
 

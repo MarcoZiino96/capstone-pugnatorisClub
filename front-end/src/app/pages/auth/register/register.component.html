@@ -3,7 +3,7 @@
   <div class="container py-2 text-center">
 
 
-    <div *ngIf="!registered">
+    <div *ngIf="!registered && !loader">
 
       <form [formGroup]="registerForm">
 
@@ -56,7 +56,8 @@
 
           <div class=" form-floating d-flex align-items-center">
 
-            <input id='password' type="{{showPassword ? 'text' : 'password'}}" class="form-control" formControlName="password">
+            <input id='password' type="{{showPassword ? 'text' : 'password'}}" class="form-control"
+              formControlName="password">
             <label>Password</label>
 
             <div class="btn" (click)="toggleShowPassword()">
@@ -75,7 +76,8 @@
         <div>
           <div class=" form-floating d-flex align-items-center">
 
-            <input id='confirmPassword' type="{{showConfirmPassword ? 'text' : 'password'}}" class="form-control" formControlName="confirmPassword">
+            <input id='confirmPassword' type="{{showConfirmPassword ? 'text' : 'password'}}" class="form-control"
+              formControlName="confirmPassword">
             <label>Conferma password</label>
 
             <div class="btn" (click)="toggleShowConfirmPassword()">
@@ -89,20 +91,31 @@
           </span>
         </div>
 
-        <button  [disabled]="!registerForm.valid" (click)="register()" class="btnForm p-2 my-5">REGISTRAMI</button>
+        <button [disabled]="!registerForm.valid" (click)="register()" class="btnForm p-2 my-5">REGISTRAMI</button>
       </form>
     </div>
-
-
-    <div class="my-5" *ngIf="registered">
-      <div class="container animate__animated animate__lightSpeedInLeft animate_slow">
-        <h2 class="fw-bold mb-5 text-white">Benvenuto <span class="nameRegistered">{{this.registerForm.value['username']}}.</span> La registrazione è avvenuta con successo!
-        </h2>
-        <a type="submit" routerLink="../../auth/login" class="text-decoration-none p-2 btnForm">
-          Vai al Login
-        </a>
-      </div>
-
-
-    </div>
   </div>
+
+ <div *ngIf="loader" class="boxLoader p-5">
+      <div>
+        <img class="loader" src="../../../../assets/img/loader.png">
+        <p class="text-white text-center fw-bold fs-3">Caricamento....</p>
+      </div>
+    </div>
+
+  <div class="my-5" *ngIf="registered">
+    <div class="container animate__animated animate__lightSpeedInLeft animate_slow">
+      <h2 class="fw-bold mb-5 text-white">Benvenuto <span
+          class="nameRegistered">{{this.registerForm.value['username']}}.</span> La registrazione è avvenuta con
+        successo!
+      </h2>
+      <a type="submit" routerLink="../../auth/login" class="text-decoration-none text-center p-2 btnForm">
+        Vai al Login
+      </a>
+    </div>
+
+
+  </div>
+
+
+</div>

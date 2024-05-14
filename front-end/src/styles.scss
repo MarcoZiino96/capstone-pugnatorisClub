@@ -1,27 +1,31 @@
 /* You can add global styles to this file, and also import other style files */
 
 /* Importing Bootstrap SCSS file. */
-@import 'bootstrap/scss/bootstrap';
+@import "bootstrap/scss/bootstrap";
 @import "../node_modules/bootstrap-icons/font/bootstrap-icons.min.css";
-@import 'animate.css/animate.min.css';
-@import 'https://fonts.googleapis.com/css2?family=Titillium+Web:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700&display=swap';
+@import "animate.css/animate.min.css";
+@import "https://fonts.googleapis.com/css2?family=Titillium+Web:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700&display=swap";
 
-:root{
-  --arancione:#C65535;
-  --black:#171D29;
-  --white:#c0c2c4;
+:root {
+  --arancione: #c65535;
+  --black: #171d29;
+  --white: #c0c2c4;
 }
 
-body{
-  background: radial-gradient(circle, rgba(23,29,41,1) 69%, rgba(13,11,9,1) 100%);
+body {
+  background: radial-gradient(
+    circle,
+    rgba(23, 29, 41, 1) 69%,
+    rgba(13, 11, 9, 1) 100%
+  );
 }
 
-*{
+* {
   font-family: "Titillium Web", sans-serif;
 }
 
 .valid {
-  color:rgb(9, 242, 9);
+  color: rgb(9, 242, 9);
 }
 
 .invalid {
@@ -30,17 +34,16 @@ body{
 
 // stile generale per i form
 
-.titleForm{
+.titleForm {
   color: var(--arancione);
   font-weight: 700;
 }
 
-.form-floating{
+.form-floating {
   margin-bottom: 5px;
 }
 
-
-.btnForm{
+.btnForm {
   border-radius: 30px;
   background-color: var(--arancione);
   font-weight: 700;
@@ -50,24 +53,23 @@ body{
 
 .bi.bi-eye-slash,
 .bi.bi-eye-fill,
-.bi.bi-cloud-plus-fill{
-color: var(--arancione);
+.bi.bi-cloud-plus-fill {
+  color: var(--arancione);
 }
 
-
 .swal2-title {
-  color:var(--arancione);
+  color: var(--arancione);
 }
 
 .swal2-confirm:not([disabled]) {
-  background-color:var(--arancione);
+  background-color: var(--arancione);
 }
 
 .swal2-popup {
   box-shadow: 0 0 15px var(--arancione);
 }
 
-.container div.boxLink a.btn.icon{
+.container div.boxLink a.btn.icon {
   width: 48px;
   height: 48px;
   padding-top: 1rem;
@@ -76,37 +78,54 @@ color: var(--arancione);
   background-color: var(--black);
   border: 1px solid var(--arancione);
   line-height: 20px;
-  @media(min-width:768px){
-    box-shadow: 0 0 15px var(--arancione) ;
-   }
+  @media (min-width: 768px) {
+    box-shadow: 0 0 15px var(--arancione);
+  }
 }
 
-.boxLink{
+.boxLink {
   max-width: 100%;
   position: fixed;
   bottom: 80px;
   right: 10px;
   z-index: 2;
-  @media(min-width:768px){
-   top: 250px;
-   right: 20px;
+  @media (min-width: 768px) {
+    top: 250px;
+    right: 20px;
   }
-  @media(min-width:1024px){
-   right: 40px;
+  @media (min-width: 1024px) {
+    right: 40px;
   }
-  @media(min-width:1360px){
-   right: 200px;
+  @media (min-width: 1360px) {
+    right: 200px;
   }
-  @media(min-width:1440px){
+  @media (min-width: 1440px) {
     right: 150px;
-   }
-  @media(min-width:1920px){
-   right: 300px;
   }
- }
+  @media (min-width: 1920px) {
+    right: 300px;
+  }
+}
+
+.boxLoader {
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.loader {
+  width: 200px;
+  height: 200px;
+  animation: rotateLoader 3s linear infinite;
+}
 
 
-
-
-
-
+@keyframes rotateLoader {
+  from {
+    transform: rotateY(0deg);
+  }
+  to {
+    transform: rotateY(360deg);
+  }
+}
