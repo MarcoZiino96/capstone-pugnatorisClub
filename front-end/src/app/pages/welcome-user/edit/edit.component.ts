@@ -31,6 +31,7 @@ export class EditComponent {
   showOldPassword: boolean = false;
   showNewPassword: boolean = false;
   showConfirmPassword: boolean = false
+  loader: boolean = false;
 
   iUser: IResponseData = {
     dateResponse: new Date(),
@@ -280,11 +281,14 @@ export class EditComponent {
 
   edit() {
 
+    this.loader = true
+
     const editData: any = this.editForm.value
 
     editData.dataNascita = new Date(editData.dataNascita)
 
     this.route.params.subscribe((params: any) => {
+
       this.authSvc.getById(params.id).subscribe((res => {
 
         this.iUser = res
@@ -297,6 +301,7 @@ export class EditComponent {
                 title: "Oops...",
                 text: "Compila tutti i campi correttamente"
               });
+              this.loader = false
             }
             throw error;
           }))
@@ -307,12 +312,15 @@ export class EditComponent {
                 title: "Oops...",
                 text: "Qualcosa è andato storto, la modifica non è andata a buon fine!"
               })
+              this.loader = false
+
             } else {
               this.swal.fire({
                 title: "Good job!",
                 text: "Modifiche apportate con  successo!",
                 icon: "success"
               })
+              this.loader = false
               this.router.navigate(['../../welcomeUser']);
             }
           }))
@@ -321,6 +329,9 @@ export class EditComponent {
   }
 
   editFoto() {
+
+    this.loader = true
+
 
     this.route.params.subscribe((params: any) => {
       this.authSvc.getById(params.id).subscribe(
@@ -335,12 +346,16 @@ export class EditComponent {
                   title: "Oops...",
                   text: "Scegli un file prima di caricarlo!!"
                 });
+              this.loader = false
+
               } else {
                 this.swal.fire({
                   icon: "error",
                   title: "Oops...",
                   text: "Problemi di comunicazione con il server, controlla la tua conessione!"
                 });
+              this.loader = false
+
               }
               throw error;
             }))
@@ -351,12 +366,15 @@ export class EditComponent {
                   text: "La tua foto è stata caricata con successo!",
                   icon: "success"
                 })
+              this.loader = false
+
               } else if (!res) {
                 this.swal.fire({
                   icon: "error",
                   title: "Oops...",
                   text: "Qualcosa è andato storto, la foto non è stata caricata!"
                 })
+              this.loader = false
               }
             }
             )
@@ -366,6 +384,8 @@ export class EditComponent {
 
 
   editPassword() {
+    this.loader = true
+
     const passwordFormData: any = this.editPasswordForm.value;
     delete passwordFormData.confirmPassword
 
@@ -383,23 +403,26 @@ export class EditComponent {
                   title: "Oops...",
                   text: "La tua vecchia password è errata"
                 });
-
+                this.loader = false
                 this.editPasswordForm.reset();
+
               } if (error.error.message === "[campo obbligatorio, campo obbligatorio]" || error.error.message === "[campo obbligatorio]") {
                 this.swal.fire({
                   icon: "error",
                   title: "Oops...",
                   text: "Compila correttamente tutti i campi"
                 });
-
+                this.loader = false
                 this.editPasswordForm.reset();
               }
+
               else if (error.error.message === 'Password vecchia uguale a quella nuova') {
                 this.swal.fire({
                   icon: "error",
                   title: "Oops...",
                   text: "La vecchia password è uguale alla nuova password"
                 });
+                this.loader = false
                 this.editPasswordForm.reset();
               }
               throw error;
@@ -411,6 +434,7 @@ export class EditComponent {
                   text: "Password cambiata con successo!",
                   icon: "success"
                 })
+                this.loader = false
                 this.router.navigate(['/welcomeUser'])
 
               } else {
@@ -419,6 +443,7 @@ export class EditComponent {
                   title: "Oops...",
                   text: "Qualcosa è andato storto"
                 })
+              this.loader = false
               }
             }
             )

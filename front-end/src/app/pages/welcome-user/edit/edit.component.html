@@ -1,4 +1,4 @@
-<div class="container mt-3">
+<div *ngIf="!loader" class="container mt-3">
 
   <div class=" boxLink">
     <a class="btn icon" routerLink="/welcomeUser">
@@ -163,5 +163,13 @@
 
     </form>
 
+  </div>
+
+</div>
+
+<div *ngIf="loader" class="boxLoader p-5">
+  <div>
+    <img class="loader" src="../../../../assets/img/loader.png">
+    <p class="text-white text-center fw-bold fs-3">Caricamento....</p>
   </div>
 </div>
