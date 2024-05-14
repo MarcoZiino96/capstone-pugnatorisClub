@@ -1,50 +1,65 @@
-<div class="container mt-3">
+<div  class="container mt-3">
 
-  <div class="boxLink">
-    <a class="btn icon" routerLink="/welcomeUser">
-      <i class="bi bi-door-open"></i>
-    </a>
-  </div>
+  <div *ngIf="!loader">
 
-  <div class="row gap-3 justify-content-center">
+    <div class="boxLink">
+      <a class="btn icon" routerLink="/welcomeUser">
+        <i class="bi bi-door-open"></i>
+      </a>
+    </div>
 
-    <h3 class=" animate__animated animate__flash animate__delay-1s fw-bold my-3 text-white text-center"> Fai una prenotazione</h3>
+    <div class="row gap-3 justify-content-center">
 
-    <div class="card text-center col-12 col-md-6 col-xl-4 mb-2">
+      <h3 class=" animate__animated animate__flash animate__delay-1s fw-bold my-3 text-white text-center"> Fai una
+        prenotazione</h3>
+
+      <div class="card text-center col-12 col-md-6 col-xl-4 mb-2">
 
 
 
-      <div>
-        <img [src]="getImgByCategories(iCorso.response.categoria)" class="card-img-top imgCardCorso" alt="fotoCategoria">
-      </div>
-      <div class="card-body text-center">
-        <h5 class="card-title">{{iCorso.response.categoria}}</h5>
-        <p class="card-text">
-          {{iCorso.response.descrizione}}</p>
-        <p class="card-text">
-          <span class="fw-bold">Durata:</span>
-          {{iCorso.response.durata}}</p>
-        <p class="card-text">
-          <span class="fw-bold">Costo mensile:</span> {{iCorso.response.costoMensile}}€
-        </p>
+        <div>
+          <img [src]="getImgByCategories(iCorso.response.categoria)" class="card-img-top imgCardCorso"
+            alt="fotoCategoria">
+        </div>
+        <div class="card-body text-center">
+          <h5 class="card-title">{{iCorso.response.categoria}}</h5>
+          <p class="card-text">
+            {{iCorso.response.descrizione}}</p>
+          <p class="card-text">
+            <span class="fw-bold">Durata:</span>
+            {{iCorso.response.durata}}
+          </p>
+          <p class="card-text">
+            <span class="fw-bold">Costo mensile:</span> {{iCorso.response.costoMensile}}€
+          </p>
 
+        </div>
       </div>
     </div>
+
+    <form [formGroup]="formTurno">
+
+      <select class="form-select my-3" aria-label="Default select example" formControlName="selectedTurno">
+        <option value="" hidden disabled>Scegli un turno</option>
+        <option *ngFor="let turno of iTurni.response" [value]="turno.id">
+          {{turno.giornoLezione}} -
+          {{turno.inizioLezione}} -
+          {{turno.fineLezione}}
+        </option>
+      </select>
+
+      <div class="text-center py-2">
+        <button [disabled]="!formTurno.valid" (click)="sendPrenotazione()" class=" btn btnPren my-3">Prenota</button>
+      </div>
+    </form>
+
   </div>
 
-  <form [formGroup]="formTurno">
+</div>
 
-    <select class="form-select my-3" aria-label="Default select example" formControlName="selectedTurno">
-      <option value="" hidden disabled>Scegli un turno</option>
-      <option *ngFor="let turno of iTurni.response" [value]="turno.id">
-        {{turno.giornoLezione}} -
-        {{turno.inizioLezione}} -
-        {{turno.fineLezione}}
-      </option>
-    </select>
-
-    <div class="text-center py-2">
-    <button [disabled]="!formTurno.valid" (click)="sendPrenotazione()" class=" btn btnPren my-3">Prenota</button>
-    </div>
-  </form>
+<div *ngIf="loader" class="boxLoader p-5">
+  <div>
+    <img class="loader" src="../../../../assets/img/loader.png">
+    <p class="text-white text-center fw-bold fs-3">Caricamento....</p>
+  </div>
 </div>

@@ -22,12 +22,14 @@ export class PrenotazioneComponent {
 
   iUser!: IUser;
   accessData!:number|undefined
+  loader: boolean = false;
 
   prenotazione: ISendPrenotazione = {
     corso: 0,
     utente: 0,
     turno: 0
   }
+
   iTurni: IResponseTurno = {
     dateResponse: new Date(),
     message: '',
@@ -131,6 +133,8 @@ export class PrenotazioneComponent {
 
   sendPrenotazione() {
 
+    this.loader = true;
+
     const selectTurnoId = this.formTurno.get('selectedTurno')?.value;
 
       this.prenotazione.turno = selectTurnoId
@@ -145,6 +149,7 @@ export class PrenotazioneComponent {
               title: "Oops...",
               text: "Hai gia una prenotazione per questo corso"
             })
+            this.loader = false;
           }
           else if (error.error.message === "Questo utente ha gia un abbonamento per questo corso") {
             this.swal.fire({
@@ -152,6 +157,7 @@ export class PrenotazioneComponent {
               title: "Oops...",
               text: "Questo utente ha gia un abbonamento per questo corso"
             })
+            this.loader = false;
           }
           else if (error.error.message === "Il corso ha raggiunto il numero massimo di partecipanti") {
             this.swal.fire({
@@ -159,6 +165,7 @@ export class PrenotazioneComponent {
               title: "Oops...",
               text: "Il corso ha raggiunto il numero massimo di partecipanti"
             })
+            this.loader = false;
           }
           throw error;
         })))
@@ -169,6 +176,7 @@ export class PrenotazioneComponent {
               text: "Lezione prenotata con successo!",
               icon: "success"
             })
+            this.loader = false;
             this.router.navigate([`../../welcomeUser/user-details/${this.iUser.id}`])
           } else {
             this.swal.fire({
@@ -176,6 +184,7 @@ export class PrenotazioneComponent {
               title: "Oops...",
               text: "Qualcosa è andato storto"
             })
+            this.loader = false;
           }
         })
   }

@@ -14,8 +14,8 @@ export class LoginComponent {
 
   msg!:ILogin;
   errorMsg!:ILogin;
-  userError:boolean=false;
   showPassword:boolean=false;
+  loader: boolean = false;
 
 
   constructor(private fb:FormBuilder, private authSvc:AuthService, private router: Router,@Inject('Swal') private swal: any){}
@@ -91,6 +91,9 @@ export class LoginComponent {
   }
 
   logIn(){
+
+    this.loader = true;
+
     this.authSvc.logIn(this.loginForm.value)
     .pipe(catchError(error=>{
       if(error.error.message === "username/password errate" || error.error.message === "Utente non trovato"){
@@ -99,12 +102,15 @@ export class LoginComponent {
           title: "Oops...",
           text: "Username o Password errate!"
         });
-      }else{
+        this.loader = false;
+
+      } else{
         this.swal.fire({
           icon: "error",
           title: "Oops...",
           text: "Problemi di comunicazione con il server, controlla la tua conessione!"
         });
+        this.loader = false;
       }
       throw error;
     })
@@ -114,6 +120,7 @@ export class LoginComponent {
       }else if(data.user.ruolo === 'ADMIN'){
         this.router.navigate(['../../welcomeAdmin']);
       }
+      this.loader = false
     })
   }
 }

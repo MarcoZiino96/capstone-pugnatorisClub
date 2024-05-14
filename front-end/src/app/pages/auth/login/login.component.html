@@ -1,12 +1,9 @@
+
 <div class="boxForm">
 
-  <div class="container text-center py-2">
+  <div *ngIf="!loader" class="container text-center py-2">
 
     <h3 class=" titleForm text-center my-4">ACCEDI</h3>
-
-    <span *ngIf="userError">
-      <p class=" text-center text-danger">username/password errate</p>
-    </span>
 
     <form [formGroup]="loginForm" (ngSubmit)="logIn()">
 
@@ -40,4 +37,12 @@
       <button [disabled]="loginForm.invalid" class=" btnForm py-2 my-5" type="submit">Sign in</button>
     </form>
   </div>
+
+  <div *ngIf="loader" class="boxLoader p-5">
+    <div>
+      <img class="loader" src="../../../../assets/img/loader.png">
+      <p class="text-white text-center fw-bold fs-3">Caricamento....</p>
+    </div>
+  </div>
+
 </div>
