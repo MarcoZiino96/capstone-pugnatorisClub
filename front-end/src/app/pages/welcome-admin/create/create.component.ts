@@ -18,6 +18,8 @@ import { ChangeRole } from '../../../Models/interfaceUtente/change-role';
 })
 export class CreateComponent{
 
+  loader: boolean = false;
+
   iUser: IUser={
     id: 0,
     password: '',
@@ -83,6 +85,8 @@ export class CreateComponent{
 
   addAbbonamento(){
 
+    this.loader = true;
+
     const selectedCorsoId = this.formAbbonamento.get('selectedCorso')?.value;
     const selectedDurata = this.formAbbonamento.get('selectedDurata')?.value;
 
@@ -99,6 +103,7 @@ export class CreateComponent{
           text: "Questo utente ha gia una abbonamento per questo corso",
           confirmButtonText: "Chiudi"
         })
+        this.loader = false;
       } if (error.error.message === "Il corso ha raggiunto il numero massimo di partecipanti") {
         this.swal.fire({
           icon: "error",
@@ -106,6 +111,7 @@ export class CreateComponent{
           text: "Il corso ha raggiunto il numero massimo di partecipanti",
           confirmButtonText: "Chiudi"
         })
+        this.loader = false;
       }
       throw error;
     }))).subscribe((data) => {
@@ -116,7 +122,9 @@ export class CreateComponent{
           icon: "success",
           confirmButtonText: "Chiudi"
         })
+        this.loader = false;
         this.router.navigate(['../../welcomeAdmin'])
+
       } else {
         this.swal.fire({
           icon: "error",
@@ -124,11 +132,16 @@ export class CreateComponent{
           text: "Qualcosa è andato storto",
           confirmButtonText: "Chiudi"
         })
+        this.loader = false;
+
       }
     })
   }
 
   updateRole(){
+
+    this.loader = true;
+
 
     const selectedRuolo = this.formRuolo.get('selectedRuolo')?.value;
     this.changeRole.ruolo = selectedRuolo
@@ -142,6 +155,7 @@ export class CreateComponent{
           text: "Questo utente ha già questo ruolo",
           confirmButtonText: "Chiudi"
         })
+        this.loader = false;
       }
       throw error;
     })))
@@ -153,6 +167,7 @@ export class CreateComponent{
           icon: "success",
           confirmButtonText: "Chiudi"
         })
+        this.loader = false;
         this.iUser.ruolo = selectedRuolo
       }
     })

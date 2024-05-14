@@ -1,4 +1,4 @@
-<div class="container">
+<div *ngIf="!loader" class="container">
 
   <div class="boxLink d-flex flex-column">
   <a class="btn icon" routerLink="/welcomeAdmin">
@@ -14,7 +14,7 @@
 
   <form [formGroup]="formRuolo">
     <select class="form-select" aria-label="Default select example" formControlName="selectedRuolo">
-      <option value="" hidden disabled>Scegli una ruolo</option>
+      <option value="" hidden disabled>Scegli un ruolo</option>
       <option value="USER">USER</option>
       <option value="ADMIN">ADMIN</option>
     </select>
@@ -84,4 +84,11 @@
       <button (click)="addAbbonamento()" [disabled]="!formAbbonamento.valid" class="btnForm py-2">Aggiungi</button>
     </div>
   </form>
+</div>
+
+<div *ngIf="loader" class="boxLoader p-5">
+  <div>
+    <img class="loader" src="../../../../assets/img/loader.png">
+    <p class="text-white text-center fw-bold fs-3">Caricamento....</p>
+  </div>
 </div>

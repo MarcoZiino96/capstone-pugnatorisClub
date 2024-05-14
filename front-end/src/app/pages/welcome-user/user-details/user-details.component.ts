@@ -17,6 +17,7 @@ export class UserDetailsComponent {
   abbonamenti!:IAbbonamento[];
   myPrenotazioni!: IResponsePrenotazione
   accessData!: number | undefined
+  loader: boolean = false;
 
   constructor(
     private authSvc: AuthService,
@@ -93,6 +94,9 @@ export class UserDetailsComponent {
   }
 
   deletePrenotazione(id: number) {
+
+    this.loader = true;
+
     this.prenotazioneSvc.deletePrenotazione(id).subscribe(( () => {
       this.myPrenotazioni.response = this.myPrenotazioni.response.filter(res => res.id !== id)
       this.swal.fire({
@@ -100,8 +104,11 @@ export class UserDetailsComponent {
         text: "Prenotazione eliminata con  successo!",
         icon: "success"
       })
+      this.loader = false
+
       if (this.myPrenotazioni.response.length === 0) {
         this.showPrenotazioni = false;
+        this.loader = false;
       }
     }))
   }

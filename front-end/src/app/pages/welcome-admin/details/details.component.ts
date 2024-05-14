@@ -18,6 +18,7 @@ export class DetailsComponent {
   showAbbonamenti!: boolean;
   showPrenotazioni!: boolean;
   myPrenotazioni!: IResponsePrenotazione
+  loader: boolean = false;
 
   constructor(
     private authSvc: AuthService,
@@ -65,6 +66,8 @@ export class DetailsComponent {
 
   deleteAbbonamento(id: number) {
 
+    this.loader = true;
+
     this.swal.fire({
       title: "Sei sicuro?",
       text: "Premi su Chiudi per tornare indietro!",
@@ -86,6 +89,7 @@ export class DetailsComponent {
             confirmButtonText: "Chiudi"
           })
         })
+        this.loader = false
       }
     })
   }

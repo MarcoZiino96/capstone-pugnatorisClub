@@ -8,7 +8,7 @@
 
 
 
-  <div *ngIf="showPrenotazioni">
+  <div *ngIf="showPrenotazioni && !loader">
 
     <div class="animate__animated animate__zoomInDown animate__slow">
       <h3 class=" text-white fw-bold text-center py-3">LE TUE PRENOTAZIONI</h3>
@@ -63,7 +63,7 @@
     <h5>Non ci sono prenotazioni da visualizzare</h5>
   </div>
 
-  <div *ngIf="showAbbonamenti">
+  <div *ngIf="showAbbonamenti && !loader">
     <div class="animate__animated animate__zoomInDown animate__slow">
       <h3 class=" text-white fw-bold text-center py-3">I TUOI ABBONAMENTI</h3>
     </div>
@@ -115,3 +115,11 @@
 
 
 </div>
+
+<div *ngIf="loader" class="boxLoader p-5">
+  <div>
+    <img class="loader" src="../../../../assets/img/loader.png">
+    <p class="text-white text-center fw-bold fs-3">Caricamento....</p>
+  </div>
+</div>
+

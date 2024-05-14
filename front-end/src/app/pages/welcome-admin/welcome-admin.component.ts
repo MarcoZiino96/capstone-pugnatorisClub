@@ -16,6 +16,7 @@ export class WelcomeAdminComponent {
   originalUsers!:ICompleteUser[]
   iUsers!:ICompleteUser[];
   searchUtenteForm!:FormGroup;
+  loader: boolean = false;
 
   constructor(
     private authSvc:AuthService,
@@ -51,7 +52,7 @@ export class WelcomeAdminComponent {
   }
 
   deleteUtente(id:number){
-
+    this.loader = true;
     this.swal.fire({
       title: "Sei sicuro?",
       text: "Premi su Chiudi per tornare indietro!",
@@ -75,6 +76,7 @@ export class WelcomeAdminComponent {
         })
       }
     })
+    this.loader = false
   }
 
   aggiornaDataBase(){

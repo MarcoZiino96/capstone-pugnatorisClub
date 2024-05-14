@@ -8,12 +8,14 @@
 
   </div>
 
-  <div *ngIf="showAbbonamenti">
+  <div class="text-center">
+    <img class="imgCardUser rounded-circle" [src]="user.fotoProfilo" alt="fotoProfilo"*ngIf="user.fotoProfilo">
+    <img class=" imgCardUser rounded-circle" src="../../../assets/img/download.png" alt="imgUtente" *ngIf="!user.fotoProfilo">
 
-    <div class="text-center">
-      <img class="imgCardUser rounded-circle" [src]="user.fotoProfilo" alt="fotoProfilo">
-      <p class=" nameUser fw-bold py-3">{{user.nome}} {{user.cognome}}</p>
-    </div>
+    <p class=" nameUser fw-bold py-3">{{user.nome}} {{user.cognome}}</p>
+  </div>
+
+  <div *ngIf="showAbbonamenti">
 
     <h5 class="text-center text-white mb-5">ABBONAMENTI</h5>
 
@@ -120,5 +122,7 @@
   <div class="fw-bold text-white text-center fs-4 my-5" *ngIf="!showPrenotazioni">
     Questo utente non ha nessuna prenotazione.
   </div>
+</div>
+
 
 
