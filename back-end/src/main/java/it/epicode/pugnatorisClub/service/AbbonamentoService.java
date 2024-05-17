@@ -87,9 +87,8 @@ public class AbbonamentoService {
     public void sendEmailAbbonamento(String email,Abbonamento abbonamento){
         SimpleMailMessage message = new SimpleMailMessage();
         message.setTo(email);
-        message.setSubject("Complimenti abbonamento per il corso di "+abbonamento.getCorso().getCategoria() +" avvenuta con successo");
-        message.setText(abbonamento.getUtente().getNome()+" Ti è stato aggiunto un abbonamento presso la palestra Pugnatoris Club");
-        message.setText("Ecco i tuoi dettagli del tuo abbonamento"+"\n"+
+        message.setSubject("Complimenti, ti sei iscritto al corso di "+abbonamento.getCorso().getCategoria());
+        message.setText("Ecco i dettagli del tuo abbonamento"+"\n"+
                 "CORSO: "+ abbonamento.getCorso().getCategoria()+"\n"+
                 "DURATA: "+ abbonamento.getDurata()+"\n"+
                 "ATTIVAZIONE: "+ abbonamento.getDataAttivazione()+"\n"+

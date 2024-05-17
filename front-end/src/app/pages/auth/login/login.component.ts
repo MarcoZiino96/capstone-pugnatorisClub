@@ -114,6 +114,7 @@ export class LoginComponent {
       }
       throw error;
     })
+
     ).subscribe(data =>{
       if(data.user.ruolo === 'USER'){
         this.router.navigate(['../../welcomeUser']);
@@ -122,5 +123,7 @@ export class LoginComponent {
       }
       this.loader = false
     })
+
   }
+
 }

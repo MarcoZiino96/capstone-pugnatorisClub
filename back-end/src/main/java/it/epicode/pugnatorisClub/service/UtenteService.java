@@ -89,7 +89,7 @@ public class UtenteService {
     public void sendEmailRegister(String email){
         SimpleMailMessage message = new SimpleMailMessage();
         message.setTo(email);
-        message.setSubject("Registrazione di alla palestra PugnatorisClub");
+        message.setSubject("Registrazione al sito della palestra PugnatorisClub");
         message.setText("Benvenuto sulla nostra applicazione, registrazione avvenuta con successo. Dai un'occhiata ai nostri corsi e prenota una lezione di prova gratuita.");
         javaMailSender.send(message);
     }
